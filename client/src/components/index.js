@@ -33,6 +33,8 @@ import ApiDescriptionBox from './api-description-box/api-description-box';
 import ApiOptionBox from './api-option-box/api-option-box';
 import NoticeNote from './notice-note/notice-note';
 import Spinner from './spinner/spinner';
+import AuthRoute from './auth-route/auth-route';
+import ProtectedRoute from './protected-route/protected-route';
 
 export {
     FormInput,
@@ -69,5 +71,7 @@ export {
     ApiDescriptionBox,
     ApiOptionBox,
     NoticeNote,
-    Spinner
+    Spinner,
+    AuthRoute,
+    ProtectedRoute
 };

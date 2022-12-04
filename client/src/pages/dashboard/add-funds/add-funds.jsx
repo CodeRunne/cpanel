@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import { telegram_payment_support_link } from '../../../config';
 import AddFundsValidation from '../../../validation/add-funds.validation';
 import { addFundsNote, addFundsBonuses, addFundsPaymentOptions, addFundsPaymentLinks } from '../../../constants/dashboard';
@@ -14,6 +15,8 @@ import {
 } from './add-funds.styles';
 
 function AddFunds() {
+	const { currentUser: { id }} = useContext(AuthContext);
+
 	const { link } = addFundsPaymentOptions[0];
 	const [paymentMethod, setPaymentMethod] = useState(link);
 	const [amount, setAmount] = useState("");
@@ -42,9 +45,9 @@ function AddFunds() {
 		if(Object.keys(errors).length === 0 && formIsSubmitted) {
 			const paymentLink = addFundsPaymentLinks[paymentMethod];
 		
-			console.log(paymentLink);
+			console.log(paymentLink, id);
 		}
-	});
+	}, [errors, formIsSubmitted, paymentMethod, id]);
 
 
 

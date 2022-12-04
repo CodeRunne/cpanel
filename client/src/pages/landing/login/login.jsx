@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { loginAuthApi } from '../../../config';
+import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import LoginValidation from '../../../validation/login.validation';
 import { 
     FormInput,
@@ -15,11 +19,14 @@ import {
 
 
 function Login() {
+    const navigate = useNavigate();
+    const { setCurrentUser, isLoading, setIsLoading } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [check, setCheck] = useState(false);
     const [errors, setErrors] = useState({});
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
+    const [responseErrorMessage, setResponseErrorMessage] = useState("");
 
     function loginUser(e) {
         e.preventDefault();
@@ -29,16 +36,63 @@ function Login() {
             password
         }));
 
+        // set isLoading to false
+        setIsLoading(false);
+
         setFormIsSubmitted(true);
     }
 
-    console.log(username, password)
-
     useEffect(() => {
         if(Object.keys(errors).length === 0 && formIsSubmitted) {
-            console.log('valid');
+            const user = {
+                username,
+                password,
+                check
+            };
+
+
+            setTimeout(() => {
+                axios.post(loginAuthApi, user)
+                    .then(({ data }) => {
+                        const { status, user, message } = data;
+
+                        if(status === "success") {
+                            // set isLoading to false
+                            setIsLoading(true);
+
+                            setCurrentUser(user);
+
+                            if(user.verified_mail) 
+                                navigate("/dashboard");
+                            else 
+                                navigate("/confirm-mail");
+                            
+                            // Empty input fields
+                            setUsername("");
+                            setPassword("");
+                        } else {
+                            // set isLoading to false
+                            setIsLoading(true);
+
+                            // setCurrentUser to null
+                            setCurrentUser(null);
+
+                            setResponseErrorMessage(message);
+                        }
+                    })
+                    .catch(error => {
+                        // set isLoading to false
+                        setIsLoading(false);
+
+                        // setCurrentUser to null
+                        setCurrentUser(null);
+
+                        setResponseErrorMessage(error)
+                    });   
+            }, 1500);
         }
-    }, [errors, formIsSubmitted]);
+    }, [errors, formIsSubmitted, username, password, setCurrentUser, setResponseErrorMessage, setIsLoading, navigate, setUsername, setPassword, isLoading, check]);
+
 
     return (
         <FormContainer  
@@ -46,6 +100,8 @@ function Login() {
             subHeaderText="to your account"
             submitForm={loginUser}
         >
+            {responseErrorMessage && <span>{responseErrorMessage}</span>}
+
             <FormInput
                 type="text"
                 name="username"
@@ -82,6 +138,7 @@ function Login() {
 
             <Button 
                 variant="primary"
+                isDisabled={!isLoading}
                 style={{ width: '100%' }}
             >
                 Sign in

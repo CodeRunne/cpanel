@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
+import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import NewOrderValidation from '../../../validation/new-order.validation';
 
 // Services Reducer
@@ -26,6 +27,7 @@ import {
 } from './new-order.styles';
 
 function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStatus, orderError }) {
+	const { currentUser: { id }} = useContext(AuthContext);
 	const [category, setCategory] = useState('');
 	const [services, setServices] = useState('');
 	const [link, setLink] = useState('');
@@ -66,7 +68,7 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 	useEffect(() => {
 		if(Object.keys(errors).length === 0 && formIsSubmitted) {
 			const newOrder = {
-				userID: 1,
+				userID: id,
 				category,
 				services,
 				link,
@@ -91,7 +93,7 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 
 		// Fetch All Services
 		fetchServices();
-	}, [errors, formIsSubmitted, addOrder, orderStatus, category, services, link, averageTime, quantity, charge, fetchServices]);
+	}, [errors, formIsSubmitted, id, addOrder, orderStatus, category, services, link, averageTime, quantity, charge, fetchServices]);
 
 	return (
 		<NewOrderContainer className="d-grid">

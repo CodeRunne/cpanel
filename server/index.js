@@ -16,7 +16,6 @@ app.use(cors());
 
 if(process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, 'client/build')));
-    console.log(path.join(__dirname, "client/build"))
 
     app.get("*", function(req, res) {
         res.sendFile(path.join(__dirname, "client/build", "index.html"));
@@ -29,7 +28,17 @@ app.get("/", (req, res) => {
 
 // Database
 const database = {
-    users: [],
+    users: [
+        {
+            id: "dsfs345fd",
+            username: "cyphersloops",
+            email: "josephibok36@gmail.com",
+            remember_me: false,
+            password: "123456",
+            verified_mail: true,
+            created_at: '2022-06-03T23:00:00.000Z'
+        }
+    ],
     services: {
         telegram: [
             {
@@ -150,7 +159,8 @@ const database = {
     },
     orders: [],
     funds: [],
-    mails: []
+    mails: [],
+    session: []
 }
 
 // Users Route
@@ -196,33 +206,28 @@ app.post("/register", (req, res) => {
 })
 
 // Login user router
-app.get("/login", (req, res) => {
-    res.send('Login');
-
+app.post("/login", (req, res) => {
     const { username, password } = req.body;
 
+    console.log(req.body)
+
     // Database
-    const { users } = database;
+    const { users, session } = database;
 
-    const existingUser = users.forEach(user => {
-        if(user.username === username && user.password === password) 
-            return user;
-        else 
-            return null;
-    });
-
-    console.log(existingUser)
+    const existingUser = users.find(user => user.username === username && user.password === password);
 
     if(existingUser) {
+        session.push({ sessionID: Math.random().toString(36).slice(2), existingUser});
+
         const data = {
             status: 'success',
+            sessionID: session[0].sessionID,
             user: existingUser
         };
 
         res.send(data);
-    } else {
-        res.send({ status: 'invalid', message: 'Username or Password is invalid' })
-    }
+    } else
+        res.send({ status: 'invalid', message: 'Username or Password is invalid' });
 });
 
 // Add funds
@@ -285,8 +290,9 @@ app.post("/dashboard/book-order", (req, res) => {
  });
 
 app.get("/dashboard", (req, res) => {
-    const { user_id } = req.body;
+    const { userID } = req.body;
     const { orders } = database;
+    console.log(userID)
 
     const userOrders = orders.filter(({ userID }) => userID === user_id);
     console.log(userOrders);    

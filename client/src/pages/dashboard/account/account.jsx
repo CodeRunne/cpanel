@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import EmailValidation from '../../../validation/email.validation';
 import { FormInput, Button } from '../../../components';
 import { AccountFormsContainer, AccountForm, AccountFormHeader } from './account.styles';
 
 function Account() {
-	const [email, setEmail] = useState("");
-	const [emailError, setEmailError] = useState({});
+	const { currentUser } = useContext(AuthContext);
+	// Current User Details
+	const { email, password } = currentUser;
+
+	const [currentEmail, setCurrentEmail] = useState(email);
+	const [currentEmailError, setCurrentEmailError] = useState({});
 	const [username, setUsername] = useState("");
 	const [usernameError, setUsernameError] = useState("");
-	const [currentPassword, setCurrentPassword] = useState("");
+	const [currentPassword, setCurrentPassword] = useState(password);
 	const [currentPasswordError, setCurrentPasswordError] = useState("");
 	const [newPassword, setNewPassword] = useState("");
 	const [newPasswordError, setNewPasswordError] = useState("");
@@ -22,7 +27,7 @@ function Account() {
 	function updateNewEmail(e) {
 		e.preventDefault();
 
-		setEmailError(EmailValidation({email}));
+		setCurrentEmailError(EmailValidation({currentEmail}));
 
 		setFormIsSubmitted(true);
 	}
@@ -88,10 +93,10 @@ function Account() {
 	}
 
 	useEffect(() => {
-		if(Object.keys(emailError).length === 0 && formIsSubmitted) {
+		if(Object.keys(currentEmailError).length === 0 && formIsSubmitted) {
 			console.log("email successfully updated");
 		}
-	}, [emailError, formIsSubmitted]);
+	}, [currentEmailError, formIsSubmitted]);
 
 	return (
 		<>	
@@ -115,9 +120,9 @@ function Account() {
 						type="email"
 						name="email"
 						label="email"
-						value={email}
-						handleChange={({ target }) => setEmail(target.value)}
-						error={emailError?.email}
+						value={currentEmail}
+						handleChange={({ target }) => setCurrentEmail(target.value)}
+						error={currentEmailError?.email}
 					/>
 
 					<Button 

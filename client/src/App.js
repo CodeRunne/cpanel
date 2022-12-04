@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Landing, Dashboard } from './pages';
+import { ProtectedRoute } from './components';
 import { APP_NAME } from './config';
 import GlobalStyles from './styles/GlobalStyles';
 
@@ -13,7 +14,11 @@ function App() {
       
       <Routes>
         <Route path="/*" element={<Landing />} />
-        <Route path="dashboard/*" element={<Dashboard />} />
+        <Route path="dashboard/*" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }/>
       </Routes>
     </>
   );

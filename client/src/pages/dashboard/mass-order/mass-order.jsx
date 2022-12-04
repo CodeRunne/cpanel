@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import MassOrderValidation from '../../../validation/mass-order.validation';
 import { FormInput, Button } from '../../../components';
 import { MassOrderForm } from './mass-order.styles';
 
 
 function MassOrder() {
+	const { currentUser: { id }} = useContext(AuthContext); 
 	const [order, setOrder] = useState("");
 	const [error, setError] = useState("");
 	const [formIsSubmitted, setFormIsSubmitted] = useState(false);
@@ -26,11 +28,11 @@ function MassOrder() {
 
 	useEffect(() => {
 		if(Object.keys(error).length === 0 && formIsSubmitted) {
-			console.log(order);
+			console.log(order, id);
 			// console.log("split orders");
 			// console.log(order.split('|'));
 		}
-	}, [error, formIsSubmitted, order])
+	}, [error, formIsSubmitted, order, id])
 
 	return (
 		<div>

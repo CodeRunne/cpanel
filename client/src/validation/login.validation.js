@@ -1,4 +1,4 @@
-function LoginValidation({ username, password }) {
+function LoginValidation({ username, password, check }) {
     const errors = {};
 
     if(!username.length) 

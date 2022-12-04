@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import TicketSupportValidation from '../../../validation/ticket-support.validation';
 import { ticketSupportNote } from '../../../constants/dashboard';
 import { Alert, NoticeBox, NoticeNote, Modal, FormInput, Button } from '../../../components';
 import { TicketSupportForm } from './ticket-support.styles';
 
 function TicketSupport() {
+	const { currentUser: { id }} = useContext(AuthContext);
 	const [subject, setSubject] = useState("");
 	const [message, setMessage] = useState("");
 	const [errors, setErrors] = useState({});
@@ -36,9 +38,9 @@ function TicketSupport() {
 
 	useEffect(() => {
 		if(Object.keys(errors).length === 0 && formIsSubmitted) {
-			console.log(subject, message)
+			console.log(subject, message, id)
 		}
-	})
+	}, [errors, formIsSubmitted, subject, message, id])
 
 
 	return (

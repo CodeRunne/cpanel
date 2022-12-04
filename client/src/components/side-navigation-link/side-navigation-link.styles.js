@@ -49,4 +49,42 @@ export const SideNavigationLinkItem = styled(NavLink)`
 	@media (max-width: 800px) {
 		font-size: 1.23rem;
 	}
+
+	@media (max-width: 600px) {
+		gap: 1.45rem;
+		font-size: 1.27rem;
+
+		svg {
+			font-size: 1.35rem;
+		}
+	}
+
+	@media (max-width: 425px) {
+		font-size: 1.37rem;
+
+		&[aria-current="page"] {
+			padding: 1.1rem .9rem;
+		}
+
+		svg {
+			font-size: 1.42rem;
+		}
+	}
+
+	@media (max-width: 375px) {
+		gap: 1.42rem;
+		font-size: 1.35rem;
+
+		svg {
+			font-size: 1.4rem;
+		}
+	}
+
+	@media (max-width: 320px) {
+		font-size: 1.33rem;
+
+		svg {
+			font-size 1.38rem;
+		}
+	}
 `;

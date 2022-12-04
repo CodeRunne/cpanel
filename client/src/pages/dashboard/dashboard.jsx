@@ -1,6 +1,7 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { DashboardNavigation, SideNavigation, TelegramButton, NoMatch, Spinner } from '../../components';
+import { SideNavContext } from '../../providers/sidenav-provider/sidenav-provider';
+import { DashboardNavigation, SideNavigation, TelegramButton, NoMatch, Spinner, ProtectedRoute } from '../../components';
 
 import { DashboardContainer, DashboardMainContainer, DashboardViewsContainer } from './dashboard.styles';
 
@@ -13,32 +14,57 @@ const NewOrder = lazy(() => import('./new-order/new-order'));
 const TicketSupport = lazy(() => import('./ticket-support/ticket-support'));
 
 function Dashboard() {
-	const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+	const { hidden } = useContext(SideNavContext);
 
 	return (
 		<DashboardContainer>
 			{/* Side Navigation */}
-			<SideNavigation isOpen={isSideNavOpen} />
+			<SideNavigation isOpen={hidden} />
 
 			{/* Dashboard Main Container */}
 			<DashboardMainContainer>
 				{/* Dashboard Navigation */}
-				<DashboardNavigation 
-					isOpen={isSideNavOpen} 
-					setIsOpen={setIsSideNavOpen} 
-				/>
+				<DashboardNavigation />
 
 				{/* Dashboard Views Container */}
 				<DashboardViewsContainer className="contents">
 					<Suspense fallback={<Spinner />}>
 						<Routes>
-							<Route index element={<Orders />} />
-							<Route path="mass-order" element={<MassOrder />} />
-							<Route path="add-funds" element={<AddFunds />} />
-							<Route path="account" element={<Account />} />
-							<Route path="book-order" element={<NewOrder />} />
-							<Route path="ticket-support" element={<TicketSupport />} />
-							<Route path="*" element={<NoMatch path="/dashboard" style={{ left: '63%' }} />} />
+							<Route index element={
+								<ProtectedRoute>
+									<Orders />
+								</ProtectedRoute>
+							}/>
+							<Route path="mass-order" element={
+								<ProtectedRoute>
+									<MassOrder />
+								</ProtectedRoute>
+							}/>
+							<Route path="add-funds" element={
+								<ProtectedRoute>
+									<AddFunds />
+								</ProtectedRoute>
+							}/>
+							<Route path="account" element={
+								<ProtectedRoute>
+									<Account />
+								</ProtectedRoute>
+							}/>
+							<Route path="book-order" element={
+								<ProtectedRoute>
+									<NewOrder />
+								</ProtectedRoute>
+							}/>
+							<Route path="ticket-support" element={
+								<ProtectedRoute>
+									<TicketSupport />
+								</ProtectedRoute>
+							}/>
+							<Route path="*" element={
+								<ProtectedRoute>
+									<NoMatch path="/dashboard" style={{ left: '63%' }} />
+								</ProtectedRoute>
+							}/>
 						</Routes>
 					</Suspense>
 				</DashboardViewsContainer>

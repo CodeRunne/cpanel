@@ -15,6 +15,13 @@ export const ButtonElement = styled.button`
 
     transition: all .4s ease; 
 
+    &[aria-disabled="true"],
+    &[disabled="true"] {
+        opacity: .7;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
     svg {
         font-size: 1.23rem;
     }

@@ -44,7 +44,6 @@ export const addNewOrder = orders => {
 		// Await Request
 		addOrder.then(({ data }) => {
 			if(data.status === "success")
-				console.log(data);
 				dispatch(addNewOrderSuccess(data.data));
 		}).catch(error => {
 			dispatch(addNewOrderFailed('There was an error adding order'));
@@ -53,11 +52,13 @@ export const addNewOrder = orders => {
 }
 
 // Fetch all orders
-export const fetchAllOrders = () => {
+export const fetchAllOrders = id => {
 	return dispatch => {
 		dispatch(fetchAllOrdersPending());
 
-		axios.get(`${getAllOrdersApi}`).then(({ data }) => {
+		const userID = id;
+
+		axios.get(`${getAllOrdersApi}`, userID).then(({ data }) => {
 			if(data.status === "success")
 				dispatch(fetchAllOrdersSuccess(data.data));
 		});

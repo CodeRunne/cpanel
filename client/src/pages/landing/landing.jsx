@@ -12,7 +12,7 @@ import ConfirmMail from './confirm-mail/confirm-mail';
 import ForgotPassword from './forgot-password/forgot-password';
 
 // Components
-import { Navigation, NoMatch } from '../../components';
+import { Navigation, NoMatch, AuthRoute } from '../../components';
 
 function Landing() {
     return (
@@ -25,8 +25,16 @@ function Landing() {
                 <Route path="how-to-use" element={<HowToUse />} />
                 <Route path="services" element={<Services />} />
                 <Route path="api" element={<Api />} />
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
+                <Route path="login" element={
+                    <AuthRoute>
+                        <Login />
+                    </AuthRoute>
+                }/>
+                <Route path="register" element={
+                    <AuthRoute>
+                        <Register />
+                    </AuthRoute>
+                }/>
                 <Route path="confirm-mail" element={<ConfirmMail />} />
                 <Route path="forgot-password" element={<ForgotPassword />} />
                 <Route path="*" element={<NoMatch path="/" style={{ left: '50%' }} />} />

@@ -1,14 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { APP_NAME } from '../../config';
+import { AuthContext } from '../../providers/auth-provider/auth-provider';
+import { SideNavContext } from '../../providers/sidenav-provider/sidenav-provider';
 import FundsDisplayButton from '../funds-display-button/funds-display-button';
 import Button from '../button/button';
 import Hamburger from '../hamburger/hamburger';
 
 import { DashboardNavigationContainer, DashboardNavigationLogo, DashboardNavigationRight } from './dashboard-navigation.styles';
 
-function DashboardNavigation({ isOpen="", setIsOpen=f=>f }) {
-	
+function DashboardNavigation() {
+	const { logoutUser } = useContext(AuthContext);
+	const { toggleHidden } = useContext(SideNavContext);
+
 	return (
 		<DashboardNavigationContainer className="d-flex d-j-sbtw d-a-cnt">
 			{/* Dashboard Navigation Logo */}
@@ -20,21 +23,16 @@ function DashboardNavigation({ isOpen="", setIsOpen=f=>f }) {
 				<FundsDisplayButton />
 				
 				{/* Logout Button */}
-				<Button style={{ padding: '.3rem .5rem' }}>Logout</Button>
+				<Button 
+					onClick={logoutUser}
+					style={{ padding: '.3rem .5rem' }}
+				>Logout</Button>
 
 				{/* Hamburger */}
-				<Hamburger 
-					isOpen={isOpen} 
-					setIsOpen={setIsOpen}
-				/>
+				<Hamburger setIsOpen={toggleHidden} />
 			</DashboardNavigationRight>
 		</DashboardNavigationContainer>
 	)
-}
-
-DashboardNavigation.propTypes = {
-	isOpen: PropTypes.string.isRequired,
-	setIsOpen: PropTypes.func.isRequired
 }
 
 export default DashboardNavigation;

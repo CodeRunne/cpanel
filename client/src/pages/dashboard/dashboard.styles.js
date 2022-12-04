@@ -31,7 +31,7 @@ export const DashboardMainContainer = styled.main`
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr min-content;
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
         grid-column: 1/-1;
     }
 `;

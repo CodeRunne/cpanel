@@ -5,9 +5,16 @@ import Button from '../button/button';
 import { HamburgerContainer } from './hamburger.styles';
 
 function Hamburger({ isOpen = true, setIsOpen=f=>f }) {
+	function toggleState() {
+		if(isOpen)
+			setIsOpen(!isOpen);
+		else
+			setIsOpen();
+	}
+
 	return (
 		<HamburgerContainer className="hamburger">
-			<Button onClick={() => setIsOpen(!isOpen)}>
+			<Button onClick={() => toggleState()}>
 				<FaBars />
 			</Button>
 		</HamburgerContainer>
@@ -15,7 +22,7 @@ function Hamburger({ isOpen = true, setIsOpen=f=>f }) {
 }
 
 Hamburger.propTypes = {
-	isOpen: PropTypes.bool.isRequired,
+	isOpen: PropTypes.bool,
 	setIsOpen: PropTypes.func.isRequired
 }
 
