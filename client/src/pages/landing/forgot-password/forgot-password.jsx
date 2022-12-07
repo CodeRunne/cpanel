@@ -3,9 +3,10 @@ import EmailValidation from '../../../validation/email.validation';
 import { 
     FormInput,
     FormContainer,
-    Button
+    Button,
+    AuthEnquiry
 } from '../../../components';
-
+import { ForgotPasswordContainer, ForgotPasswordHeader, ForgotPasswordHeaderText, ForgotPasswordSubHeader } from './forgot-password.styles';
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
@@ -27,27 +28,39 @@ function ForgotPassword() {
     }, [error, formIsSubmitted]);
 
     return (
-        <FormContainer  
-            headerText="Forgot password"
-            submitForm={forgotPassword}
-        >
-            <FormInput
-                type="email"
-                name="email"
-                label="Email"
-                placeholder="email@gmail.com"
-                value={email}
-                handleChange={({ target }) => setEmail(target.value)}
-                error={error?.email}
-            />
+        <ForgotPasswordContainer>
+            {/* Forgot password header */}
+            <ForgotPasswordHeader>
+                <ForgotPasswordHeaderText>Reset password</ForgotPasswordHeaderText>
+                <ForgotPasswordSubHeader>Forgotten your password? Enter your email address below to begin reset process.</ForgotPasswordSubHeader>
+            </ForgotPasswordHeader>
 
-            <Button 
-                variant="primary"
-                style={{ width: '100%' }}
-            >
-                Submit
-            </Button>
-        </FormContainer>
+            {/* Forgot password container */}
+            <FormContainer submitForm={forgotPassword}>
+
+                <FormInput
+                    type="email"
+                    name="email"
+                    label="Email address"
+                    value={email}
+                    handleChange={({ target }) => setEmail(target.value)}
+                    error={error?.email}
+                />
+
+                <Button 
+                    variant="primary"
+                    style={{ width: '100%' }}
+                >
+                    Submit
+                </Button>
+
+                <AuthEnquiry 
+                    enquiry="Not a member yet" 
+                    enquiryPage="Create an account"
+                    route="/register"
+                />
+            </FormContainer>
+        </ForgotPasswordContainer>
     )
 }
 

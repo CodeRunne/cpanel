@@ -8,7 +8,7 @@ export const InputStyles = css`
     font-size: 1.18rem;
 
     @media (max-width: 900px) {
-        height: 3.5rem;
+        height: 3.9rem;
         padding: 1rem 1.2rem;
         font-size: 1.2rem;
     }
@@ -73,11 +73,11 @@ export const InputCommonStyles = css`
 
 export const FormGroup = styled.div`
     width: 100%;
-    gap: .35rem;
+    gap: .4rem;
     position: relative;
 
-    @media (max-width: 768px) {
-        gap: .4rem;
+    @media (max-width: 1200px) {
+        gap: .5rem;
     } 
 
     @media (max-width: 320px) {
@@ -129,6 +129,10 @@ export const FormTextarea = styled.textarea`
     resize: none;
     ${InputStyles};
     ${InputCommonStyles};
+
+    @media (max-width: 1100px) {
+        height: 16rem;
+    }
 `;
 
 export const FormInputInfo = styled.span`

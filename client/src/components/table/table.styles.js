@@ -70,27 +70,27 @@ export const TableContainer = styled.table`
 	}
 
 	.figure {
-		font-size: .9rem;
+		font-size: 1.08rem;
 		font-weight: 500;
 
 		@media (max-width: 1200px) {
-			font-size: 1.04rem;
+			font-size: 1.07rem;
 		}
 
 		@media (max-width: 900px) {
-			font-size: 1.12rem;
+			font-size: 1.14rem;
 		}
 
 		@media (max-width: 800px) {
-			font-size: 1.09rem;
-		}
-
-		@media (max-width: 768px) {
 			font-size: 1.12rem;
 		}
 
+		@media (max-width: 768px) {
+			font-size: 1.13rem;
+		}
+
 		@media (max-width: 425px) {
-			font-size: 1.15rem;
+			font-size: 1.17rem;
 		}
 
 		@media (max-width: 375px) {

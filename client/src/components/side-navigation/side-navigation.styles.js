@@ -30,15 +30,15 @@ export const SideNavigationContainer = styled.aside`
 	}
 
 	@media (max-width: 425px) {
-		width: 63%;
-	}
-
-	@media (max-width: 375px) {
 		width: 70%;
 	}
 
-	@media (max-width: 320px) {
+	@media (max-width: 375px) {
 		width: 80%;
+	}
+
+	@media (max-width: 320px) {
+		width: 90%;
 	}
 `;
 

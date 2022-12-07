@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { loginAuthApi } from '../../../config';
+import { loginAuthApi, encryptionKey } from '../../../config';
+import encryptData from '../../../assets/_helpers/encrypt-data';
 import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import LoginValidation from '../../../validation/login.validation';
 import { 
@@ -60,16 +61,19 @@ function Login() {
                             // set isLoading to false
                             setIsLoading(true);
 
-                            setCurrentUser(user);
+                            // Encrypt user data
+                            const encryptUser = encryptData(user, encryptionKey);
 
-                            if(user.verified_mail) 
-                                navigate("/dashboard");
-                            else 
-                                navigate("/confirm-mail");
+                            sessionStorage.setItem("token", JSON.stringify(encryptUser));
+
+                            setCurrentUser(user);
                             
                             // Empty input fields
                             setUsername("");
                             setPassword("");
+
+                            // Navigate to dashboard
+                            navigate("/dashboard");
                         } else {
                             // set isLoading to false
                             setIsLoading(true);
@@ -92,7 +96,6 @@ function Login() {
             }, 1500);
         }
     }, [errors, formIsSubmitted, username, password, setCurrentUser, setResponseErrorMessage, setIsLoading, navigate, setUsername, setPassword, isLoading, check]);
-
 
     return (
         <FormContainer  

@@ -47,12 +47,11 @@ function TicketSupport() {
 		<div>
 			{/* Alert */}
 			{ alertIsOpen ? 
-				<Alert 
-					message="Any misbehaviour with our customer support will cause your account to be limited and/or potentially suspended " 
+				<Alert  
 					isOpen={alertIsOpen} 
 					setIsOpen={setAlertIsOpen}
 				>
-					<p className="font-bold">Notice to all users: </p> 
+					Any misbehaviour with our customer support will cause your account to be limited and/or potentially suspended <span className="font-bold">Notice to all users: </span> 
 			</Alert> : null }
 
 			{/* Modal */}

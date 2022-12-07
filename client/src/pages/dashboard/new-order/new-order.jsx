@@ -65,6 +65,12 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 		}
 	}, [setIsModalOpen]);
 
+	// Fetch all services
+	useEffect(() => {
+		// Fetch Services
+		fetchServices();
+	}, [fetchServices]);
+
 	useEffect(() => {
 		if(Object.keys(errors).length === 0 && formIsSubmitted) {
 			const newOrder = {
@@ -80,7 +86,7 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 			// Add new order
 			addOrder(newOrder);
 
-			if(orderStatus) {
+			if(orderStatus === "success") {
 				// Empty inputs
 				setCategory("");
 				setLink("");
@@ -90,10 +96,7 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 				setAverageTime("");
 			}
 		}
-
-		// Fetch All Services
-		fetchServices();
-	}, [errors, formIsSubmitted, id, addOrder, orderStatus, category, services, link, averageTime, quantity, charge, fetchServices]);
+	}, [errors, formIsSubmitted, addOrder, orderStatus, id,  category, services, link, averageTime, quantity, charge, setCategory, setLink, setServices, setQuantity, setCharge, setAverageTime]);
 
 	return (
 		<NewOrderContainer className="d-grid">

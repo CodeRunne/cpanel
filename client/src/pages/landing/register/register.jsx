@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { registerAuthApi, encryptionKey } from '../../../config';
+import encryptData from '../../../assets/_helpers/encrypt-data';
+import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import RegistrationValidation from '../../../validation/registration.validation';
 import { 
     FormInput,
@@ -7,15 +12,18 @@ import {
     AuthEnquiry
 } from '../../../components';
 
-function Login() {
+function Register() {
+    const navigate = useNavigate();
+    const { setCurrentUser, isLoading, setIsLoading } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState({});
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
+    const [responseErrorMessage, setResponseErrorMessage] = useState("");
 
-    function loginUser(e) {
+    function registerUser(e) {
         e.preventDefault();
 
         setErrors(RegistrationValidation({
@@ -30,16 +38,65 @@ function Login() {
 
     useEffect(() => {
         if(Object.keys(errors).length === 0 && formIsSubmitted) {
-            console.log('valid');
+            const user = {
+                username,
+                email,
+                password,
+            };
+
+            setTimeout(() => {
+                axios.post(registerAuthApi, user)
+                    .then(({ data }) => {
+                        const { status, user, message } = data;
+
+                        if(status === "success") {
+                            // set isLoading to false
+                            setIsLoading(true);
+
+                            // Encrypt user data
+                            const encryptUser = encryptData(user, encryptionKey);
+
+                            sessionStorage.setItem("token", JSON.stringify(encryptUser));
+
+                            setCurrentUser(user);
+
+                            // Empty input fields
+                            setUsername("");
+                            setEmail("");
+                            setPassword("");
+
+                            navigate('/confirm-mail');
+                        } else {
+                            // set isLoading to false
+                            setIsLoading(true);
+
+                            // setCurrentUser to null
+                            setCurrentUser(null);
+
+                            setResponseErrorMessage(message);
+                        }
+                    })
+                    .catch(error => {
+                        // set isLoading to false
+                        setIsLoading(false);
+
+                        // setCurrentUser to null
+                        setCurrentUser(null);
+
+                        setResponseErrorMessage(error)
+                    });   
+            }, 1500);
         }
-    }, [errors, formIsSubmitted]);
+    }, [errors, formIsSubmitted, username, email, password, setCurrentUser, setResponseErrorMessage, setIsLoading, navigate, setUsername, setEmail, setPassword, isLoading]);
 
     return (
         <FormContainer  
             headerText="Sign up"
             subHeaderText="Get the most out of it"
-            submitForm={loginUser}
+            submitForm={registerUser}
         >
+            {responseErrorMessage && <span>{responseErrorMessage}</span>}
+
             <FormInput
                 type="text"
                 name="username"
@@ -78,6 +135,7 @@ function Login() {
 
             <Button 
                 variant="primary"
+                isDisabled={!isLoading}
                 style={{ width: '100%' }}
             >
                 Sign up
@@ -92,4 +150,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Register;

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../../providers/auth-provider/auth-provider';
 import MassOrderValidation from '../../../validation/mass-order.validation';
 import { FormInput, Button } from '../../../components';
-import { MassOrderForm } from './mass-order.styles';
+import { MassOrderContainer, MassOrderForm } from './mass-order.styles';
 
 
 function MassOrder() {
@@ -28,14 +28,13 @@ function MassOrder() {
 
 	useEffect(() => {
 		if(Object.keys(error).length === 0 && formIsSubmitted) {
-			console.log(order, id);
 			// console.log("split orders");
 			// console.log(order.split('|'));
 		}
 	}, [error, formIsSubmitted, order, id])
 
 	return (
-		<div>
+		<MassOrderContainer>
 			<h5 className="heading-5" style={{ fontWeight: '500' }}>Mass Order</h5>
 
 			<MassOrderForm 
@@ -59,7 +58,7 @@ function MassOrder() {
 					style={{ width: '100%' }}
 				>Submit</Button>
 			</MassOrderForm>
-		</div>
+		</MassOrderContainer>
 	)
 }
 

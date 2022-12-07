@@ -35,4 +35,37 @@ export const ModalContentContainer = styled.div`
     
 	    svg { font-size: 1.35rem; }
     }
+
+    @media (max-width: 1200px) {
+    	width: 55vw;
+    	height: 65vh;
+    }
+
+    @media (max-width: 1100px) {
+    	width: 58vw;
+    	height: 70vh;
+    }
+
+    @media (max-width: 1024px) {
+    	width: 64vw;
+    	height: 72vh;
+    }
+
+    @media (max-width: 900px) {
+    	width: 70vw;
+    	height: 65vh;
+    }
+
+    @media (max-width: 800px) {
+    	width: 75vw;
+    }
+
+    @media (max-width: 600px) {
+    	width: 85vw;
+    }
+
+    @media (max-width: 500px) {
+    	width: 90vw;
+    	height: 60vh;
+    }
 `;

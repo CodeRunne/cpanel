@@ -33,7 +33,7 @@ function ordersReducer(state=initialState, action) {
 		case OrdersActionTypes.FETCH_ALL_ORDERS_SUCCESS:
 			return {
 				...state,
-				data: state.data.concat(action.payload),
+				data: [].concat(action.payload),
 				status: 'success'
 			}
 		case OrdersActionTypes.FETCH_ALL_ORDERS_PENDING:
@@ -44,7 +44,7 @@ function ordersReducer(state=initialState, action) {
 		case OrdersActionTypes.FILTER_ORDERS_BY_STATUS:
 			return {
 				...state,
-				data: state.data.concat(action.payload),				
+				data: [].concat(action.payload),				
 				status: 'success'
 			}
 		default:

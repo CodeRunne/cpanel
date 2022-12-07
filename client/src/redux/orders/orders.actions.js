@@ -26,9 +26,9 @@ const fetchAllOrdersPending = () => ({
 	type: OrdersActionTypes.FETCH_ALL_ORDERS_PENDING
 });
 
-export const filterOrdersByStatus = orders => ({
+export const filterOrdersByStatus = filteredOrders => ({
 	type: OrdersActionTypes.FILTER_ORDERS_BY_STATUS,
-	payload: orders
+	payload: filteredOrders
 });
 
 
@@ -52,26 +52,26 @@ export const addNewOrder = orders => {
 }
 
 // Fetch all orders
-export const fetchAllOrders = id => {
+export const fetchAllOrders = userID => {
 	return dispatch => {
 		dispatch(fetchAllOrdersPending());
 
-		const userID = id;
-
-		axios.get(`${getAllOrdersApi}`, userID).then(({ data }) => {
-			if(data.status === "success")
+		axios.get(`${getAllOrdersApi(userID)}`).then(({ data }) => {
+			if(data.status === "success") 
 				dispatch(fetchAllOrdersSuccess(data.data));
 		});
 	}
 };
 
 // Filter orders
-export const filterOrders = status => {
+export const filterOrders = (status, userID) => {
 	return dispatch => {
-		const postServiceCategory = axios.post(`${filterOrdersByStatusApi(status)}`);
+		const postServiceCategory = axios.post(`${filterOrdersByStatusApi(status)}`, {userID});
 
 		postServiceCategory
-			.then(({ data }) => console.log(data));
-		// dispatch(filterOrdersByStatus(data))
+			.then(({ data: { status, data }}) => {
+				if(status === "success")
+					dispatch(filterOrdersByStatus(data));
+			});
 	}
 }

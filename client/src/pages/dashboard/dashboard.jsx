@@ -14,7 +14,7 @@ const NewOrder = lazy(() => import('./new-order/new-order'));
 const TicketSupport = lazy(() => import('./ticket-support/ticket-support'));
 
 function Dashboard() {
-	const { hidden } = useContext(SideNavContext);
+	const { hidden } = useContext(SideNavContext);	
 
 	return (
 		<DashboardContainer>

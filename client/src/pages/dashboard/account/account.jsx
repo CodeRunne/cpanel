@@ -7,13 +7,13 @@ import { AccountFormsContainer, AccountForm, AccountFormHeader } from './account
 function Account() {
 	const { currentUser } = useContext(AuthContext);
 	// Current User Details
-	const { email, password } = currentUser;
+	const { email, username } = currentUser;
 
 	const [currentEmail, setCurrentEmail] = useState(email);
 	const [currentEmailError, setCurrentEmailError] = useState({});
-	const [username, setUsername] = useState("");
-	const [usernameError, setUsernameError] = useState("");
-	const [currentPassword, setCurrentPassword] = useState(password);
+	const [updatedUsername, setUpdatedUsername] = useState(username);
+	const [updatedUsernameError, setUpdatedUsernameError] = useState("");
+	const [currentPassword, setCurrentPassword] = useState("");
 	const [currentPasswordError, setCurrentPasswordError] = useState("");
 	const [newPassword, setNewPassword] = useState("");
 	const [newPasswordError, setNewPasswordError] = useState("");
@@ -36,8 +36,8 @@ function Account() {
 	function updateUsername(e) {
 		e.preventDefault();
 
-		if(!username.length)
-			setUsernameError("Username can't be empty");
+		if(!updatedUsername.length)
+			setUpdatedUsernameError("Username can't be empty");
 
 		console.log(e.target.value);
 	}
@@ -146,9 +146,9 @@ function Account() {
 						type="username"
 						name="username"
 						label="username"
-						value={username}
-						handleChange={({ target }) => setUsername(target.value)}
-						error={usernameError}
+						value={updatedUsername}
+						handleChange={({ target }) => setUpdatedUsername(target.value)}
+						error={updatedUsernameError}
 					/>
 
 					<Button 

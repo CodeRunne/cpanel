@@ -26,7 +26,9 @@ function ViewOrders({ fetchOrders, orders, ordersStatus }) {
 
 	let content;
 
-	if(orders.length && ordersStatus === "success") {
+	if(ordersStatus === "pending") 
+		content = (<p>Loading...</p>);
+	else if(orders.length && ordersStatus === "success") {
 		const ordersTableHead = ["ID", "category", "services", "link", "status", "quantity", "charge", "average time"];
 
 		content = (
@@ -40,15 +42,14 @@ function ViewOrders({ fetchOrders, orders, ordersStatus }) {
 		        </Table>
 			</OrderContainer>
 		);
-	} else {
+	} else 
 		content = ( <EmptySlate /> );
-	}
 
 	return (
 		<>	
 			{/* Alert */}
 			{alertIsOpen && <Alert isOpen={alertIsOpen} setIsOpen={setAlertIsOpen}>
-				<p><span className="font-bold">Need support to check an order?</span> Order support is done only through tickets <Link className="gradient-text" to="/dashboard/ticket-support">Click here to send new ticket</Link></p>
+				<span className="font-bold">Need support to check an order?</span> Order support is done only through tickets <Link className="gradient-text" to="/dashboard/ticket-support">Click here to send new ticket</Link>
 			</Alert>}
 
 			{/* User Profile */}
@@ -66,7 +67,7 @@ const mapStateToDispatch = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-	fetchOrders: () => dispatch(fetchAllOrders())
+	fetchOrders: id => dispatch(fetchAllOrders(id))
 });
 
 export default connect(mapStateToDispatch, mapDispatchToProps)(ViewOrders);

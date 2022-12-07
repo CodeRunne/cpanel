@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { AuthContext } from './providers/auth-provider/auth-provider';
 import { Landing, Dashboard } from './pages';
 import { ProtectedRoute } from './components';
 import { APP_NAME } from './config';

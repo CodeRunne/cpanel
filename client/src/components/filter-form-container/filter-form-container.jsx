@@ -10,7 +10,7 @@ function FilterFormContainer({ type="services", filterName="" }) {
          <FilterButton type={type} name={filterName} />
 
          {/* Search form */}
-         <SearchForm />
+         <SearchForm type={type} />
 	    </FilterForm>
 	)
 }

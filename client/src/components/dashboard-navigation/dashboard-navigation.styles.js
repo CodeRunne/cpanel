@@ -13,7 +13,7 @@ export const DashboardNavigationContainer = styled.nav`
     }
 
     @media (max-width: 375px) {
-    	padding: 1.4rem 1.5rem;
+    	padding: 1rem 2.2rem;
     }
 `;
 
@@ -44,7 +44,11 @@ export const DashboardNavigationRight = styled.div`
 	}
 
 	@media (max-width: 600px) {
-		gap: .5rem;
+		gap: 1rem;
+    }
+
+    @media (max-width: 500px) {
+		gap: .6rem;
     }
 
     @media (max-width: 425px) {

@@ -1,5 +1,6 @@
 function NewOrderValidation({ category, services, link, averageTime, quantity, charge }) {
-	const errors = {};
+	let numb = {};
+	let errors = {};
 
 	if(!category.length)
 		errors.categories = "Please select a category you would like to order";
@@ -8,11 +9,13 @@ function NewOrderValidation({ category, services, link, averageTime, quantity, c
 		errors.services = "Please select a service you would like to order";
 
 	if(!services.includes(category))
-		errors.services = "Select a services based on the selected category";
+		errors.services = "Select service based on the selected category";
 
-	if(!(/^@[a-zA-Z]{3,}$/ig).exec(link)) 
+	if((/^https:\/\/(t\.me)+\/[\w]+$/ig).exec(link) || (/^@[a-zA-Z]{3,}$/ig).exec(link))
+			numb.value = "val";
+	else 
 		errors.link = "Please add a valid telegram account";
-	
+
 	if(quantity < 500 || quantity > 28000)
 		errors.quantity = "Quantity can't be less than 500 or greater than 28000";
 

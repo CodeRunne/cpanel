@@ -35,9 +35,18 @@ export const FundsDisplayButtonWrapper = styled.div`
 				font-size: 1.45rem;
     			margin-top: .2rem;
 			}
+
+			@media (max-width: 600px) {
+				padding: 0.3rem 0.2rem;
+
+				svg {
+					font-size: 1.35rem;
+					margin-top: .1rem;
+				}
+			}
 		}
 
-		@media (max-width: 600px) {
+		@media (max-width: 375px) {
 			display: none;
 		}
 	}

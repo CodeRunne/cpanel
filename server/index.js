@@ -31,10 +31,12 @@ const database = {
     users: [
         {
             id: "dsfs345fd",
+            sessionID: "mrans4eh39n",
             username: "cyphersloops",
             email: "josephibok36@gmail.com",
             remember_me: false,
             password: "123456",
+            check: false,
             verified_mail: true,
             created_at: '2022-06-03T23:00:00.000Z'
         }
@@ -157,10 +159,44 @@ const database = {
             }
         ]
     },
-    orders: [],
+    orders: [
+        {
+            id: 0,
+            userID: 'dsfs345fd',
+            category: 'telegram',
+            services: 'Telegram 0% Drop Members - [Super Instant Start][High Speed]',
+            link: "https://t.me/axios",
+            quantity: 500,
+            status: 'pending',
+            charge: 20,
+            averageTime: '1 hour 30 minutes'
+        },
+        {
+            id: 1,
+            userID: 'dsfs345fd',
+            category: 'spotify',
+            services: 'Spotify Enhancer - [Super Instant Start]',
+            link: "https://t.me/axios",
+            quantity: 7000,
+            status: 'completed',
+            charge: 523,
+            averageTime: '42 hours'
+        },
+        {
+            id: 2,
+            userID: 'another user',
+            category: 'instagram',
+            services: 'Instagram Enhancer - [Instagram Start Server]',
+            link: 6362,
+            quantity: 5000,
+            status: 'pending',
+            charge: 34,
+            averageTime: '30 minutes'
+        }
+    ],
     funds: [],
     mails: [],
-    session: []
+    session: ["mrans4eh39n"]
 }
 
 // Users Route
@@ -168,66 +204,121 @@ app.get('/users', (req, res) => {
     res.send(database.users);
 });
 
+// Session Route
+app.get('/user-session', (req, res) => {
+    res.send(database.session);
+});
+
 // Register user route
 app.post("/register", (req, res) => {
     // Database
-    const { users } = database;
+    const { users, session } = database;
 
     const { username, email, password } = req.body;
 
     // Existing User
-    const existingUser = users.find(user => user.email === email);
-    console.log(existingUser, email);
+    const existingUser = users.find(user => user.email === email && user.password === password);
 
     if(!existingUser) {
+        // Remove previous session
+        session.pop();
+
+        // Create new user session
+        session.push(Math.random().toString(36).slice(2));
+
+        // Fetch user session
+        const [ userSession ] = session;
+
         users.push({
             id: Math.random().toString(36).slice(2),
+            sessionID: userSession,
             username,
             email,
             password,
             verified_mail: false,
-            payment: {
-                status: false,
-                amount: 0
-            },
             created_at: new Date().toISOString()
         });
         
 
-        const data = {
-            status: "success",
-            user: existingUser
-        };
+        const user = {
+            id: users[users.length - 1].id,
+            sessionID: session[0],
+            username,
+            email,
+            verified_mail: false
+        }
 
-        res.send(data);
-    } else {
+        console.log({ status: "success", user });
+
+        res.send({ status: "success", user });
+    } else 
         res.status(404).send({status: 'failed', message: 'User already exists'});
-    }
 })
 
 // Login user router
 app.post("/login", (req, res) => {
     const { username, password } = req.body;
 
-    console.log(req.body)
-
     // Database
-    const { users, session } = database;
+    let { users } = database;
 
     const existingUser = users.find(user => user.username === username && user.password === password);
 
     if(existingUser) {
-        session.push({ sessionID: Math.random().toString(36).slice(2), existingUser});
+        const { id, sessionID, username, email, verified_mail } = existingUser;
+
+        const user = {
+            id,
+            sessionID,
+            username,
+            email,
+            verified_mail
+        }
 
         const data = {
             status: 'success',
-            sessionID: session[0].sessionID,
-            user: existingUser
+            user
         };
 
         res.send(data);
     } else
         res.send({ status: 'invalid', message: 'Username or Password is invalid' });
+});
+
+
+// Auth route
+app.post('/auth/:token', (req, res) => {
+    const { token } = req.params;
+    const { session, users } = database;
+
+    const sessionExists = session[0] === token;
+
+    if(sessionExists) {
+        const existingUser = users.find(user => user.sessionID === token);
+
+        const { id, sessionID, username, email, verified_mail } = existingUser;
+
+        const user = {
+            id,
+            sessionID,
+            username,
+            email,
+            verified_mail
+        }
+
+        res.status(200).send({ user });
+    } else
+        res.status(404).send("User does not exist");
+});
+
+// Logout
+app.get("/logout", (req, res) => {
+    let { session } = database;
+
+    session = [].concat([]);
+
+    if(session.length === 0)
+        res.status(200).send({ status: "success" });
 });
 
 // Add funds
@@ -259,6 +350,15 @@ app.post("/services/:category", (req, res) => {
 })
 
 // Orders
+
+// Show all orders
+app.get("/orders", (req, res) => {
+    const { orders } = database;
+
+    res.send(orders);
+})
+
+// Book orders
 app.post("/dashboard/book-order", (req, res) => {
     const { userID, category, services, link, averageTime, quantity, charge } = req.body;
     
@@ -266,7 +366,6 @@ app.post("/dashboard/book-order", (req, res) => {
     const { orders } = database; 
     const validateData = [userID, category, services, link, averageTime, quantity, charge].every(value => Boolean(value));
 
-    console.log(validateData)
     if(validateData) {
         const newOrder = {
             id: Math.random().toString(36).slice(2),
@@ -281,6 +380,8 @@ app.post("/dashboard/book-order", (req, res) => {
             created_at: new Date().toISOString()
         };
 
+        console.log(newOrder, "order")
+
         orders.push(newOrder);
 
         res.send({ status: 'success', newOrder });
@@ -289,34 +390,36 @@ app.post("/dashboard/book-order", (req, res) => {
     }
  });
 
-app.get("/dashboard", (req, res) => {
-    const { userID } = req.body;
+// Get user order
+app.get("/dashboard/:userID", (req, res) => {
+    const { userID } = req.params;
     const { orders } = database;
-    console.log(userID)
 
-    const userOrders = orders.filter(({ userID }) => userID === user_id);
-    console.log(userOrders);    
+    const userOrders = orders.filter(order => order.userID === userID);
 
-    res.send({ status: 'success', data: orders });
+    res.send({ status: 'success', data: userOrders });
 })
 
 app.post("/dashboard/:status", (req, res) => {
     let { status } = req.params;
+    const { userID } = req.body;
     const { orders } = database;
+    let filterOrdersByStatus;
 
     if(status === "in progress")
         status = "in_progress"; 
 
+    filterOrdersByStatus = 
+        orders
+            .filter(order => order.userID === userID)
+            .filter(order => order.status === status);
+
+
     if(status === "all") 
-        res.send(services);
-
-    console.log(status);
-
-
-    const filterOrdersByStatus = orders.filter(order => order.status === status);
+        filterOrdersByStatus = orders.filter(order => order.userID === userID);
 
     if(filterOrdersByStatus)
-        res.send(filterOrdersByStatus);
+        res.send({status: 'success', data: filterOrdersByStatus});
 });
 
 // Port

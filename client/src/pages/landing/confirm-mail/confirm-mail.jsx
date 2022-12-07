@@ -1,8 +1,11 @@
 import React from 'react';
+import { ConfirmMailContainer } from './confirm-mail.styles';
 
 function ConfirmMail() {
     return (
-        <h1>Confirm Mail</h1>
+        <ConfirmMailContainer>
+            <h3>Verify password</h3>
+        </ConfirmMailContainer>
     )
 }
 

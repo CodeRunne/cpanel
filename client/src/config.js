@@ -5,13 +5,18 @@ const API_URL = "http://localhost:5000";
 // API's
 export const loginAuthApi = `${API_URL}/login`;
 export const registerAuthApi = `${API_URL}/register`;
+export const logoutAuthApi = `${API_URL}/logout`;
+export const authApi = token => `${API_URL}/auth/${token}`;
 export const composeMailApi = "";
 export const getServicesApi = `${API_URL}/services`;
 export const filterServicesByCategoryApi = category => `${API_URL}/services/${category}`;
 export const addNewOrdersApi = `${API_URL}/dashboard/book-order`;
 export const filterOrdersByStatusApi = category => `${API_URL}/dashboard/${category}`;
-export const getAllOrdersApi = `${API_URL}/dashboard`;
+export const getAllOrdersApi = userID => `${API_URL}/dashboard/${userID}`;
 export const addFundsApi = `${API_URL}/add-funds`;
+
+// Encryption key
+export const encryptionKey = "8enc2_q813o6_8enc2q813o6"
 
 // Telegram Bot Redirect Link
 export const telegram_redirect_bot_link = "https://t.me/frozymelon";

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function OrdersRow({ id, category, services, link, averageTime, quantity, charge,  status }) {
+function OrdersRow({ userID, category, services, link, averageTime, quantity, charge,  status }) {
 	return (
 		<tr>
-	        <td>{id}</td>
+	        <td>{userID}</td>
 	        <td>{category}</td>
 	        <td>{services}</td>
-	        <td>{status}</td>
 	        <td>{link}</td>
+	        <td>{status}</td>
 	        <td>{averageTime}</td>
 	        <td>{quantity}</td>
 	        <td>{charge}</td>
@@ -17,12 +17,12 @@ function OrdersRow({ id, category, services, link, averageTime, quantity, charge
 }
 
 OrdersRow.propTypes = {
-	id: PropTypes.string.isRequired,
+	userID: PropTypes.string.isRequired,
 	category: PropTypes.string.isRequired,
 	services: PropTypes.string.isRequired,
 	link: PropTypes.string.isRequired,
 	averageTime: PropTypes.string.isRequired,
-	charge: PropTypes.string.isRequired
+	charge: PropTypes.number.isRequired
 }
 
 export default OrdersRow

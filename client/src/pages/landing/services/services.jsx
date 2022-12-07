@@ -27,7 +27,9 @@ function Services({ fetchServices, services }) {
 
    return (
     <>
-     { alertIsOpen ? <Alert isOpen={alertIsOpen} setIsOpen={setAlertIsOpen} message="Before placing an order, click on the view button and read the description in full" /> : null }
+     { alertIsOpen ? <Alert isOpen={alertIsOpen} setIsOpen={setAlertIsOpen}>
+        Before placing an order, click on the view button and read the description in full
+     </Alert> : null }
 
      {/* Section Container */}
      <ServicesContainer className="container">

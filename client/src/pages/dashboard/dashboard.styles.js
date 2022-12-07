@@ -37,6 +37,7 @@ export const DashboardMainContainer = styled.main`
 `;
  
 export const DashboardViewsContainer = styled.section`
+    width: 100%;
     padding: 2.5rem 3rem;
 
     @media (max-width: 1024px) {
@@ -44,10 +45,26 @@ export const DashboardViewsContainer = styled.section`
     }
 
     @media (max-width: 600px) {
-        padding: 2rem 2.2rem;
+        padding: 2rem 2rem;
+    }
+
+    @media (max-width: 500px) {
+        padding: 2rem 1.6rem;
     }
 
     @media (max-width: 425px) {
         padding: 1.8rem 1rem;
+    }
+
+    @media (max-width: 375px) {
+        h5.heading-5 {
+            font-size: 1.7rem !important;   
+        }
+    }
+
+    @media (max-width: 320px) {
+        h5.heading-5 {
+            font-size: 1.5rem !important;   
+        }
     }
 `;

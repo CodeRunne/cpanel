@@ -6,12 +6,17 @@ export const AuthEnquiryText = styled.p`
 	margin-top: 1.5rem;
 	text-align: center;
 
+	@media (max-width: 1200px) {
+		margin-top: 1.3rem;
+	}
+
 	@media (max-width: 900px) {
-		font-size: 1.16rem;
+		font-size: 1.22rem;
+		margin-top: 1rem;
 	}
 
 	@media (max-width: 425px) {
-		font-size: 1.23rem;
+		font-size: 1.28rem;
 	}
 `;
 

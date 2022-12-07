@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
+import { AuthContext } from '../../providers/auth-provider/auth-provider';
 // Services Action
 import { filterServices } from '../../redux/services/services.actions';
 import { selectServicesCategory } from '../../redux/services/services.selectors';
@@ -13,8 +14,12 @@ import { FilterOptionsContainer, FilterOptionsText } from './filter-options.styl
 
 function FilterOptions({ type, filterServices, filterOrders, servicesCategories, orderStatuses }) {
 	let options;
+	const { currentUser } = useContext(AuthContext);
+	const userID = currentUser?.id ?? '';
+
+
 	const filterOptionAction = (type, data) => {
-		if(type === "orders") return filterOrders(data);
+		if(type === "orders") return filterOrders(data, userID);
 
 		return filterServices(data);
 	}
@@ -40,7 +45,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
 	filterServices: category => dispatch(filterServices(category)),
-	filterOrders: status => dispatch(filterOrders(status))
+	filterOrders: (status, id) => dispatch(filterOrders(status, id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterOptions)

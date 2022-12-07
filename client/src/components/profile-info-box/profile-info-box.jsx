@@ -10,7 +10,7 @@ function ProfileInfoBox({ icon, title="", content="" }) {
 
 			{/* Profile Info Container */}
 			<ProfileInfoContainer className="d-flex d-flex-column">
-				<ProfileInfoBoxTitle className="gradient-text">{title}</ProfileInfoBoxTitle>
+				<ProfileInfoBoxTitle>{title}</ProfileInfoBoxTitle>
 				<ProfileInfoContent>{content}</ProfileInfoContent>
 			</ProfileInfoContainer>
 		</ProfileInfoBoxItem>

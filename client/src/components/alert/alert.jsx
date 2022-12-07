@@ -7,8 +7,7 @@ import { AlertContainer } from './alert.styles';
 function Alert({ message, children, setIsOpen, isOpen }) {
 	return (
 		<AlertContainer className="d-flex d-j-cnt d-a-cnt">
-			{children}
-			{ message }
+			<p>{ children }</p>
 			<Button onClick={() => setIsOpen(!isOpen)}>
 				<AiOutlineClose />
 			</Button>
