@@ -29,8 +29,35 @@ export const NoticeBoxContainer = styled.div`
 			&:not(:last-of-type) {
 				margin-bottom: .7rem;
 			}
+
+			@media (max-width: 1200px) {
+				font-size: 1.1rem;
+			}
+
+			@media (max-width: 900px) {
+				font-size: 1.2rem;
+			}
+
+			@media (max-width: 425px) {
+				font-size: 1.23rem;
+			}
 		}
-}
+	}
+
+	@media (max-width: 500px) {
+		padding-inline-start: 1.3rem;
+		padding-inline-end: 1.3rem;
+	}
+
+	@media (max-width: 375px) {
+		padding-inline-start: 1.1rem;
+		padding-inline-end: 1.1rem;
+	}
+
+	@media (max-width: 300px) {
+		padding-inline-start: .9rem;
+		padding-inline-end: .9rem;
+	}
 `;
 
 export const NoticeBoxHeader = styled.h6`
@@ -39,5 +66,19 @@ export const NoticeBoxHeader = styled.h6`
 
 	span {
 		color: var(--accent);
+	}
+
+	@media (max-width: 900px) {
+		font-size: 1.4rem !important;
+	}
+
+	@media (max-width: 425px) {
+		font-size: 1.6rem !important;
+		margin-bottom: 1.5rem;
+	}
+
+	@media (max-width: 375px) {
+		font-size: 1.55rem !important;
+		margin-bottom: 1.3rem;
 	}
 `;

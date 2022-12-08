@@ -22,6 +22,10 @@ export const DashboardContainer = styled.main`
     @media (max-width: 800px) {
     	grid-template-columns: 5rem repeat(5,1fr) repeat(3,8rem);
     }
+
+    @media (max-width: 425px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const DashboardMainContainer = styled.main`

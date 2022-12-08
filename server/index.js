@@ -50,7 +50,13 @@ const database = {
                 min_order: 500,
                 max_order: 25000,
                 avg_time: '1 hour 24 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    options: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    content: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"]
+                }
             },
             {
                 id: 4218,
@@ -285,6 +291,26 @@ app.post("/login", (req, res) => {
         res.send({ status: 'invalid', message: 'Username or Password is invalid' });
 });
 
+// Forgot Password
+app.post("/forgot-password", (req, res) => {
+    const { email } = req.body;
+    const { users } = database;
+
+    let existingUser = users.find(user => user.email === email);
+
+    if(existingUser) {
+        const newPassword = "cypher123456";
+        console.log(newPassword)
+
+        existingUser = {
+            ...existingUser,
+            password: newPassword
+        };
+
+        res.send({ status: "success" });
+    } else 
+        res.send({ status: "invalid", message: "User does not exist" });
+})
 
 // Auth route
 app.post('/auth/:token', (req, res) => {

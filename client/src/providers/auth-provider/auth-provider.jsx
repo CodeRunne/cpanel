@@ -7,7 +7,7 @@ const AuthContext = createContext({
 	currentUser: null,
 	setCurrentUser: () => {},
 	setIsLoading: () => {},
-	isLoading: true,
+	isLoading: false,
 	logoutUser: () => {},
 	checkUserAuth: () => {}
 });
@@ -15,9 +15,9 @@ const AuthContext = createContext({
 
 const AuthProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	
-	useEffect(() => {
+	useEffect(() => {		
 		function authUser() {
 			const user = sessionStorage.getItem("token") ? JSON.parse(sessionStorage.getItem("token")) : null; 
 			const decryptedUser = user ? decryptData(user, encryptionKey) : null;
@@ -30,10 +30,8 @@ const AuthProvider = ({ children }) => {
 						if(user) 
 							setCurrentUser(user);
 					})
-			} else {
-				setIsLoading(false);
+			} else
 				setCurrentUser(null);
-			}
 		}
 
 		authUser();
@@ -43,8 +41,13 @@ const AuthProvider = ({ children }) => {
 	function logoutUser() {
 		axios.get(logoutAuthApi)
 			.then(({ data: { status }}) => {
-				if(status === "success")
+				if(status === "success") {
+					// Delete session
+					sessionStorage.removeItem('token');
+
+					// Set current user to null
 					setCurrentUser(null);
+				}
 			});
 	}
 

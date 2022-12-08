@@ -6,10 +6,7 @@ function Spinner({ style }) {
 	return (
 		<SpinnerContainer 
 			className="d-flex d-j-cnt d-a-cnt"
-			style={{ 
-				height: '100vh',
-				...style
-			}}
+			style={{ ...style }}
 		>
 			<SpinnerItem></SpinnerItem>
 			<SpinnerItem></SpinnerItem>

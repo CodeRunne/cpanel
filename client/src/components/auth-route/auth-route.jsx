@@ -10,8 +10,8 @@ function AuthRoute({ children }) {
 		return <Navigate to="/dashboard" replace />
 	else if(!verifiedMail) 
 		return <Navigate to="/confirm-mail" replace />
-
-	return children;
+	else
+		return children;
 }
 
 export default AuthRoute;

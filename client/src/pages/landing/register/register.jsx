@@ -33,6 +33,9 @@ function Register() {
             confirmPassword
         }));
 
+        if([username, email, password, confirmPassword].every(value => Boolean(value)) && password === confirmPassword)
+            setIsLoading(true);
+
         setFormIsSubmitted(true);
     }
 
@@ -51,7 +54,7 @@ function Register() {
 
                         if(status === "success") {
                             // set isLoading to false
-                            setIsLoading(true);
+                            setIsLoading(false);
 
                             // Encrypt user data
                             const encryptUser = encryptData(user, encryptionKey);
@@ -68,7 +71,7 @@ function Register() {
                             navigate('/confirm-mail');
                         } else {
                             // set isLoading to false
-                            setIsLoading(true);
+                            setIsLoading(false);
 
                             // setCurrentUser to null
                             setCurrentUser(null);
@@ -85,7 +88,7 @@ function Register() {
 
                         setResponseErrorMessage(error)
                     });   
-            }, 1500);
+            }, 1000);
         }
     }, [errors, formIsSubmitted, username, email, password, setCurrentUser, setResponseErrorMessage, setIsLoading, navigate, setUsername, setEmail, setPassword, isLoading]);
 
@@ -135,7 +138,7 @@ function Register() {
 
             <Button 
                 variant="primary"
-                isDisabled={!isLoading}
+                isDisabled={isLoading}
                 style={{ width: '100%' }}
             >
                 Sign up

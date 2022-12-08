@@ -11,22 +11,22 @@ export const SideNavigationContainer = styled.aside`
 	left: 0;
 
 	@media (max-width: 768px) {
-		width: 35vw;
+		width: 40vw;
 		height: 100vh;
 
 		position: fixed;
 		top: 0;
-		z-index: 100;
+		z-index: 2000;
 
 		transition: left .4s ease;
 	}
 
 	@media (max-width: 600px) {
-		width: 45%;
+		width: 50%;
 	}
 
 	@media (max-width: 500px) {
-		width: 55%;
+		width: 60%;
 	}
 
 	@media (max-width: 425px) {
@@ -38,8 +38,47 @@ export const SideNavigationContainer = styled.aside`
 	}
 
 	@media (max-width: 320px) {
-		width: 90%;
+		width: 95%;
 	}
+`;
+
+export const SideNavigationCloseButton = styled.span`
+	position: absolute;
+	top: 2%;
+	right: 5%;
+	font-size: 1.7rem;
+	color: var(--white);
+	display: none;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	@media (max-width: 768px) {
+		display: block;
+	}
+`;
+
+export const AccountFundsContainer = styled.div`
+	padding-left: 3rem;
+    margin-bottom: 3rem;
+    align-self: flex-start;
+
+    @media (min-width: 425px) {
+    	display: none;
+    }
+`;
+
+export const AccountFundsHeading = styled.div`
+	color: var(--accent);
+	font-size: 1.07rem;
+	font-weight: 700;
+	margin-bottom: .1rem;
+`;
+
+export const AccountFunds = styled.h4`
+	font-size: 2.8rem;
+    font-weight: 700;
 `;
 
 export const SideNavigationListItem = styled.ul`

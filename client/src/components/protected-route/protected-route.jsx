@@ -10,8 +10,8 @@ function ProtectedRoute({ children }) {
 		return <Navigate to="/login" replace />
 	else if(!verifiedMail)
 		return <Navigate to="/confirm-mail" replace />
-
-	return children;
+	else
+		return children;
 }
 
 export default ProtectedRoute;

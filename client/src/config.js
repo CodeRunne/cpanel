@@ -6,6 +6,7 @@ const API_URL = "http://localhost:5000";
 export const loginAuthApi = `${API_URL}/login`;
 export const registerAuthApi = `${API_URL}/register`;
 export const logoutAuthApi = `${API_URL}/logout`;
+export const forgotPasswordApi = `${API_URL}/forgot-password`;
 export const authApi = token => `${API_URL}/auth/${token}`;
 export const composeMailApi = "";
 export const getServicesApi = `${API_URL}/services`;

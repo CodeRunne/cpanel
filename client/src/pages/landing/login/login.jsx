@@ -9,7 +9,8 @@ import {
     FormInput,
     FormContainer,
     Button,
-    AuthEnquiry
+    AuthEnquiry,
+    RequestErrorBox
 } from '../../../components';
 import { 
     LoginFeature,
@@ -27,7 +28,7 @@ function Login() {
     const [check, setCheck] = useState(false);
     const [errors, setErrors] = useState({});
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
-    const [responseErrorMessage, setResponseErrorMessage] = useState("");
+    const [responseError, setResponseError] = useState("");
 
     function loginUser(e) {
         e.preventDefault();
@@ -37,8 +38,8 @@ function Login() {
             password
         }));
 
-        // set isLoading to false
-        setIsLoading(false);
+        if([username, password].every(value => Boolean(value)))
+            setIsLoading(true);
 
         setFormIsSubmitted(true);
     }
@@ -51,7 +52,6 @@ function Login() {
                 check
             };
 
-
             setTimeout(() => {
                 axios.post(loginAuthApi, user)
                     .then(({ data }) => {
@@ -59,7 +59,7 @@ function Login() {
 
                         if(status === "success") {
                             // set isLoading to false
-                            setIsLoading(true);
+                            setIsLoading(false);
 
                             // Encrypt user data
                             const encryptUser = encryptData(user, encryptionKey);
@@ -76,12 +76,12 @@ function Login() {
                             navigate("/dashboard");
                         } else {
                             // set isLoading to false
-                            setIsLoading(true);
+                            setIsLoading(false);
 
                             // setCurrentUser to null
                             setCurrentUser(null);
 
-                            setResponseErrorMessage(message);
+                            setResponseError(message);
                         }
                     })
                     .catch(error => {
@@ -91,11 +91,11 @@ function Login() {
                         // setCurrentUser to null
                         setCurrentUser(null);
 
-                        setResponseErrorMessage(error)
+                        setResponseError(error)
                     });   
-            }, 1500);
+            }, 1000);
         }
-    }, [errors, formIsSubmitted, username, password, setCurrentUser, setResponseErrorMessage, setIsLoading, navigate, setUsername, setPassword, isLoading, check]);
+    }, [errors, formIsSubmitted, username, password, setCurrentUser, setResponseError, setIsLoading, navigate, setUsername, setPassword, isLoading, check]);
 
     return (
         <FormContainer  
@@ -103,7 +103,12 @@ function Login() {
             subHeaderText="to your account"
             submitForm={loginUser}
         >
-            {responseErrorMessage && <span>{responseErrorMessage}</span>}
+            {/* Request Error */}
+            {responseError && 
+                <RequestErrorBox 
+                    error={responseError} 
+                    closeErrorBox={() =>setResponseError("")} 
+                    style={{ "marginBottom": '1rem' }}/>}
 
             <FormInput
                 type="text"
@@ -141,7 +146,7 @@ function Login() {
 
             <Button 
                 variant="primary"
-                isDisabled={!isLoading}
+                isDisabled={isLoading}
                 style={{ width: '100%' }}
             >
                 Sign in

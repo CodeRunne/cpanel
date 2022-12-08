@@ -33,7 +33,42 @@ export const ModalContentContainer = styled.div`
 	    right: 0%;
 	    transform: translate(-50%, -50%);
     
-	    svg { font-size: 1.35rem; }
+	    svg { 
+            font-size: 1.4rem; 
+        }
+        
+        @media (max-width: 1200px) {
+            top: 9%;
+            right: 1%;
+
+            svg {
+                font-size: 1.45rem;
+            } 
+        }
+
+        @media (max-width: 1100px) {
+            top: 8.5%; 
+        }
+
+        @media (max-width: 900px) {
+            right: 2%;
+
+            svg {
+                font-size: 1.6rem;
+            } 
+        }
+
+        @media (max-width: 768px) {
+            right: 3%;
+
+            svg {
+                font-size: 1.7rem;
+            } 
+        }
+
+        @media (max-width: 500px) {
+            top: 10%; 
+        }
     }
 
     @media (max-width: 1200px) {

@@ -35,6 +35,7 @@ import NoticeNote from './notice-note/notice-note';
 import Spinner from './spinner/spinner';
 import AuthRoute from './auth-route/auth-route';
 import ProtectedRoute from './protected-route/protected-route';
+import RequestErrorBox from './request-error-box/request-error-box';
 
 export {
     FormInput,
@@ -73,5 +74,6 @@ export {
     NoticeNote,
     Spinner,
     AuthRoute,
-    ProtectedRoute
+    ProtectedRoute,
+    RequestErrorBox
 };

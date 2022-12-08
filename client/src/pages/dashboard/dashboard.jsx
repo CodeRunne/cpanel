@@ -1,6 +1,5 @@
-import React, { lazy, Suspense, useContext } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { SideNavContext } from '../../providers/sidenav-provider/sidenav-provider';
 import { DashboardNavigation, SideNavigation, TelegramButton, NoMatch, Spinner, ProtectedRoute } from '../../components';
 
 import { DashboardContainer, DashboardMainContainer, DashboardViewsContainer } from './dashboard.styles';
@@ -14,12 +13,12 @@ const NewOrder = lazy(() => import('./new-order/new-order'));
 const TicketSupport = lazy(() => import('./ticket-support/ticket-support'));
 
 function Dashboard() {
-	const { hidden } = useContext(SideNavContext);	
+	
 
 	return (
 		<DashboardContainer>
 			{/* Side Navigation */}
-			<SideNavigation isOpen={hidden} />
+			<SideNavigation />
 
 			{/* Dashboard Main Container */}
 			<DashboardMainContainer>

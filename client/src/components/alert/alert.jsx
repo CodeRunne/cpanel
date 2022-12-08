@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineClose } from 'react-icons/ai';
 import Button from '../button/button';
-import { AlertContainer } from './alert.styles';
+import { AlertContainer, AlertText } from './alert.styles';
 
 function Alert({ message, children, setIsOpen, isOpen }) {
 	return (
 		<AlertContainer className="d-flex d-j-cnt d-a-cnt">
-			<p>{ children }</p>
+			<AlertText>{ children }</AlertText>
 			<Button onClick={() => setIsOpen(!isOpen)}>
 				<AiOutlineClose />
 			</Button>

@@ -35,10 +35,7 @@ function Landing() {
                         <Register />
                     </AuthRoute>
                 }/>
-                <Route path="confirm-mail" element={
-                    <AuthRoute>
-                        <ConfirmMail />
-                    </AuthRoute> }/>
+                <Route path="confirm-mail" element={<ConfirmMail />}/>
                 <Route path="forgot-password" element={<ForgotPassword />} />
                 <Route path="*" element={<NoMatch path="/" style={{ left: '50%' }} />} />
             </Routes>

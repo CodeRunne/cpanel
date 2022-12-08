@@ -4,27 +4,9 @@ import Button from '../button/button';
 import Modal from '../modal/modal';
 
 
-function ServiceCollection({ title, data }) {
+function ServiceCollection({ title, data, index }) {
    const [isModalOpen, setIsModalOpen] = useState(false);
-   let services = {};
-
-   const tableRows = data.map(({ id, service, rate, min_order, max_order, avg_time, description }) => {
-         services = {service, description};
-
-         return (
-            <tr key={id} className='services__table__row'>
-              <td>{id}</td>
-              <td>{service}</td>
-              <td className="figure">${rate}</td>
-              <td className="figure">{min_order}</td>
-              <td className="figure">{max_order}</td>
-              <td>{avg_time}</td>
-              <td>
-                 <Button variant="primary" onClick={() => setIsModalOpen(true)}>View</Button>
-              </td>
-            </tr>
-         )
-      });
+   const [singleService, setSingleService] = useState({});
 
 	return (
 		<>
@@ -33,7 +15,10 @@ function ServiceCollection({ title, data }) {
                isOpen={isModalOpen}
                closeModal={() => setIsModalOpen(prevState => !prevState)}
             >
-            <h3 style={{ textAlign: 'center', textTransform: 'uppercase' }}>{services.service}</h3>
+            <h3 style={{ textAlign: 'center', textTransform: 'uppercase' }}>{singleService.service}</h3>
+            <div>
+               <p>Link: {singleService.description.link}</p>
+            </div>
          </Modal> : null }
 
 			<tr className="title">
@@ -43,7 +28,22 @@ function ServiceCollection({ title, data }) {
         	</tr>
 
          {/* Table rows */}
-         { tableRows }
+         {data.map(({ id, service, rate, min_order, max_order, avg_time, description }) => (
+            <tr key={id} className='services__table__row'>
+              <td>{id}</td>
+              <td>{service}</td>
+              <td className="figure">${rate}</td>
+              <td className="figure">{min_order}</td>
+              <td className="figure">{max_order}</td>
+              <td>{avg_time}</td>
+              <td>
+                 <Button variant="primary" onClick={() => {
+                     setIsModalOpen(true);
+                     setSingleService({ service, description });
+                 }}>View</Button>
+              </td>
+            </tr>
+         ))}
 		</>
 	)
 }

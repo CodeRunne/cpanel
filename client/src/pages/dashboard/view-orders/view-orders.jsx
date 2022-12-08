@@ -45,12 +45,12 @@ function ViewOrders({ fetchOrders, orders, ordersStatus }) {
 	} else 
 		content = ( <EmptySlate /> );
 
+			// {/* Alert */}
+			// {alertIsOpen && <Alert isOpen={alertIsOpen} setIsOpen={setAlertIsOpen}>
+			// 	<span className="font-bold">Need support to check an order?</span> Order support is done only through tickets <Link className="gradient-text" to="/dashboard/ticket-support">Click here to send new ticket</Link>
+			// </Alert>}
 	return (
 		<>	
-			{/* Alert */}
-			{alertIsOpen && <Alert isOpen={alertIsOpen} setIsOpen={setAlertIsOpen}>
-				<span className="font-bold">Need support to check an order?</span> Order support is done only through tickets <Link className="gradient-text" to="/dashboard/ticket-support">Click here to send new ticket</Link>
-			</Alert>}
 
 			{/* User Profile */}
 			<Profile style={{ marginTop: alertIsOpen ? '2rem' : '0' }} />
