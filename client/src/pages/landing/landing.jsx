@@ -10,6 +10,8 @@ import Login from './login/login';
 import Register from './register/register';
 import ConfirmMail from './confirm-mail/confirm-mail';
 import ForgotPassword from './forgot-password/forgot-password';
+import ForgotPasswordRequest from './forgot-password-request/forgot-password-request';
+import ResetPassword from './reset-password/reset-password';
 
 // Components
 import { Navigation, NoMatch, AuthRoute } from '../../components';
@@ -36,7 +38,10 @@ function Landing() {
                     </AuthRoute>
                 }/>
                 <Route path="confirm-mail" element={<ConfirmMail />}/>
-                <Route path="forgot-password" element={<ForgotPassword />} />
+                <Route path="forgot-password" element={<ForgotPassword />}>
+                    <Route index element={<ForgotPasswordRequest />} />
+                    <Route path=":token/edit" element={<ResetPassword />} />
+                </Route>
                 <Route path="*" element={<NoMatch path="/" style={{ left: '50%' }} />} />
             </Routes>
         </>

@@ -134,6 +134,7 @@ function Login() {
                         type="checkbox"
                         name="login_check"
                         value={check}
+                        groupStyle={{ gap: 0 }}
                         handleChange={e => setCheck(!check)}
                     />
 

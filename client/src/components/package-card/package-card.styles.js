@@ -28,6 +28,7 @@ export const PackageCardContainer = styled.figure`
 
 	svg {
 		font-size: 2.5rem;
+		transition: color .35s ease-in-out;
 
 		@media (max-width: 1200px) {
 			font-size: 2.7rem;
@@ -58,8 +59,9 @@ export const PackageCardContainer = styled.figure`
 	    transform: translate(-50%, -50%);
 	    width: 0.2rem;
 	    height: 75%;
-	    background: var(--white-tint-9);
+	    background: var(--white-tint-8);
 	    border-radius: 0.1rem;
+	    transition: background .5s ease-in-out;
 
 	    @media (max-width: 425px) {
 			width: .22rem;
@@ -69,11 +71,21 @@ export const PackageCardContainer = styled.figure`
 
 	&:hover {
 		cursor: pointer;
-		background: var(--grey-tint-2);
+		background: var(--white-tint-9);
 	}
 
-	&:hover a {
-		color: var(--grey) !important;
+	&:hover {
+		& svg {
+			color: var(--primary);
+		}
+
+		& a {
+			color: var(--grey-tint-6);
+		}
+
+		&:before {
+			background: linear-gradient(to top right, var(--primary-tint-7), var(--primary));
+		}
 	}
 `;
 

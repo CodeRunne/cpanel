@@ -5,7 +5,7 @@ export const HowToUseContainer = styled.div`
 	width: max-content;
 	margin: 4rem auto;
     background: var(--white);
-    box-shadow: .4px .5px .6rem rgba(0,0,0,0.02);
+    box-shadow: .4px .5px .6rem rgba(0,0,0,0.04);
     border-radius: 0.3rem;
     padding: 2rem 2.5rem;
 

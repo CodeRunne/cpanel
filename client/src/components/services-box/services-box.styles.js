@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const ServicesBoxContainer = styled.blockquote`
     background: var(--white);
+    border: 1px solid var(--grey-tint-1);
     border-radius: 0.4rem;
     padding: 2.5rem 2rem;
 	box-shadow: .1px .15px .8rem rgba(0,0,0,0.02);

@@ -61,12 +61,8 @@ export const FormHeading = styled.div`
         gap: 1rem;
     }
 
-    @media (max-width: 768px) {
-        gap: 1.2rem;
-    }
-
     @media (max-width: 425px) {
-        gap: 1.15rem;
+        gap: 1.12rem;
     }
 `;
 

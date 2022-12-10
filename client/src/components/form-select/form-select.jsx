@@ -28,7 +28,7 @@ function FormSelect({ label = "", handleChange=f=>f, error, options=[], ...other
 }
 
 FormSelect.propTypes = {
-	label: PropTypes.string.isRequired,
+	label: PropTypes.string,
 	handleChange: PropTypes.func.isRequired,
 	error: PropTypes.string,
 	options: PropTypes.array.isRequired,

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const ServicesContainer = styled.section`
 	padding-bottom: 4rem;
+	margin-bottom: 1rem;
 	display: grid;
 	grid-template-columns: repeat(4,minmax(23%, 1fr));
 	gap: 1.5rem;
@@ -128,22 +129,14 @@ export const InfoLink = styled(Link)`
 export const AboutContact = styled.p`
 	font-size: 1.11rem;
 	font-weight: 500;
-	position: relative;
-
-	&:before {
-		content: '';
-	    position: absolute;
-	    top: 105%;
-	    left: .5%;
-	    transform: translateY(-50%);
-	    border-radius: 0.1rem;
-	    width: 10%;
-	    height: 0.18rem;
-		background: linear-gradient(to top right, var(--primary-tint-7), var(--primary));
-	}
+	position: relative;	
 
 	span {
-		font-weight: 400;
+		font-weight: 600;
 		margin-left: .4rem;
+	
+		&:first-child {
+			font-weight: 600;
+		}
 	}
 `;

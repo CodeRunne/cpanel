@@ -39,9 +39,7 @@ function Home() {
 
             <InfoContainer className="container d-grid">
                 {/* Links */}
-                <InfoBox>
-                    <h5 className="heading-5">Follow smmstone in social media</h5>
-
+                <InfoBox heading="Follow smmstone in social media">
                     <InfoListItem className="d-grid">
                         {InfoLinks.map(({ name, url }) => (
                             <li key={name}>
@@ -52,12 +50,11 @@ function Home() {
                 </InfoBox>
 
                 {/* Links */}
-                <InfoBox>
-                    <h5 className="heading-5">About {APP_NAME}</h5>
-
+                <InfoBox heading={`About ${APP_NAME}`}>
                     <p className="paragraph"><span className="font-bold">{APP_NAME}</span> is not a only panel. An advanced and unique community. We are here to make you special on social media and to make you better than others</p>
 
-                    <AboutContact>Contact:  <span className="paragraph">admin@smmstone.com</span></AboutContact>
+                    <AboutContact>
+                        <span className="gradient-text">Contact:</span>  <span className="paragraph">admin@smmstone.com</span></AboutContact>
                 </InfoBox>
             </InfoContainer>
 

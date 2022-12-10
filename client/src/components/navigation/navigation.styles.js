@@ -5,7 +5,8 @@ export const NavigationContainer = styled.nav`
     width: 100%;
     padding: 1.3rem 1.8rem;
     background: var(--white);
-    box-shadow: 0 1.3px .5rem rgba(0,0,0,0.038);
+    box-shadow: 0 1.3px .5rem rgba(0,0,0,0.03);
+    border-bottom: 1px solid var(--grey-tint-1);
     position: relative;
 
     @media (min-width: 786px) {
@@ -51,7 +52,7 @@ export const NavigationLogo = styled(Link)`
 `;
 
 export const NavigationRight = styled.div`
-    gap: 4rem;
+    gap: 3rem;
 
     @media (max-width: 1100px) {
         gap: 2rem;

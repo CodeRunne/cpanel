@@ -28,8 +28,9 @@ import {
 
 function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStatus, orderError }) {
 	const { currentUser: { id }} = useContext(AuthContext);
+	const orderCategories = categories.filter(category => category !== "all");
 	const [category, setCategory] = useState('');
-	const [services, setServices] = useState('');
+	const [service, setService] = useState('');
 	const [link, setLink] = useState('');
 	const [averageTime, setAverageTime] = useState('');
 	const [quantity, setQuantity] = useState('');
@@ -46,7 +47,7 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 		// Validate orders
 		setErrors(NewOrderValidation({
 			category,
-			services,
+			service,
 			link,
 			averageTime,
 			quantity,
@@ -76,7 +77,7 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 			const newOrder = {
 				userID: id,
 				category,
-				services,
+				service,
 				link,
 				averageTime,
 				quantity,
@@ -90,13 +91,13 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 				// Empty inputs
 				setCategory("");
 				setLink("");
-				setServices("");
+				setService("");
 				setQuantity("");
 				setCharge("");
 				setAverageTime("");
 			}
 		}
-	}, [errors, formIsSubmitted, addOrder, orderStatus, id,  category, services, link, averageTime, quantity, charge, setCategory, setLink, setServices, setQuantity, setCharge, setAverageTime]);
+	}, [errors, formIsSubmitted, addOrder, orderStatus, id,  category, service, link, averageTime, quantity, charge, setCategory, setLink, setService, setQuantity, setCharge, setAverageTime]);
 
 	return (
 		<NewOrderContainer className="d-grid">
@@ -127,7 +128,7 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 				<FormSelect 
 					label="Categories"
 					name="services-category"
-					options={categories}
+					options={orderCategories}
 					value={category}
 					handleChange={({ target }) => setCategory(target.value)}
 					error={errors?.categories}
@@ -137,9 +138,9 @@ function NewOrder({ fetchServices, categories, servicesList, addOrder, orderStat
 					label="Services"
 					name="services"
 					options={servicesList}
-					value={services}
-					handleChange={({ target }) => setServices(target.value)}
-					error={errors?.services}
+					value={service}
+					handleChange={({ target }) => setService(target.value)}
+					error={errors?.service}
 				/>
 
 				<FormInput 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button/button';
 import Modal from '../modal/modal';
+import DescriptionBox from '../description-box/description-box';
 
 
 function ServiceCollection({ title, data, index }) {
@@ -15,10 +16,15 @@ function ServiceCollection({ title, data, index }) {
                isOpen={isModalOpen}
                closeModal={() => setIsModalOpen(prevState => !prevState)}
             >
-            <h3 style={{ textAlign: 'center', textTransform: 'uppercase' }}>{singleService.service}</h3>
-            <div>
-               <p>Link: {singleService.description.link}</p>
-            </div>
+               {/* Description Box */}
+               <DescriptionBox 
+                  heading={singleService.service}
+                  features={singleService?.description?.features}
+                  start_time={singleService?.description?.start_time}
+                  link={singleService?.description?.link}
+                  notice={singleService?.description?.notice}
+                  warning={singleService?.description?.warning}
+               />
          </Modal> : null }
 
 			<tr className="title">

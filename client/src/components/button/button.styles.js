@@ -14,6 +14,23 @@ export const ButtonElement = styled.button`
     gap: 0.3rem;
 
     transition: all .4s ease; 
+    position: relative;
+    z-index: 2;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1.8px solid var(--dark);
+        transform: translateY(-50%);
+        opacity: 0;
+        border-radius: inherit;
+        z-index: -3;
+        transition: opacity .5s ease;
+    } 
 
     &[aria-disabled="true"],
     &[disabled="true"] {
@@ -30,6 +47,10 @@ export const ButtonElement = styled.button`
     &:focus {
         outline: 0;
         cursor: pointer;
+    }
+
+    &:focus::before {
+        opacity: 1;
     }
 
     @media (max-width: 1024px) {

@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineClose } from 'react-icons/ai';
 import Portals from '../portals/portals';
-import Button from '../button/button';
 import { ModalContainer, ModalContentContainer } from './modal.styles';
 
 function Modal({ children, isOpen = true, closeModal=f=>f }) {
@@ -26,9 +25,9 @@ function Modal({ children, isOpen = true, closeModal=f=>f }) {
 				{/* Modal Content Container */}
 				<ModalContentContainer>
 					{/* Modal Close Button */}
-					<Button onClick={closeModal}>
+					<span onClick={closeModal} className="close-button">
 						<AiOutlineClose />
-					</Button>
+					</span>
 
 					{children}
 				</ModalContentContainer>

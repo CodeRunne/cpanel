@@ -27,12 +27,17 @@ export const ModalContentContainer = styled.div`
     box-shadow: 1px 1.2px 0.5rem rgb(0, 0, 0, 0.03);
     position: relative;
     
-    button {
+    span.close-button {
     	position: absolute;
-	    top: 7%;
-	    right: 0%;
+	    top: 8%;
+	    right: 1.5%;
 	    transform: translate(-50%, -50%);
     
+        &:hover,
+        &:focus {
+            cursor: pointer;
+        }
+
 	    svg { 
             font-size: 1.4rem; 
         }
@@ -96,11 +101,11 @@ export const ModalContentContainer = styled.div`
     }
 
     @media (max-width: 600px) {
-    	width: 85vw;
+    	width: 90vw;
     }
 
     @media (max-width: 500px) {
-    	width: 90vw;
+    	width: 95vw;
     	height: 60vh;
     }
 `;

@@ -5,8 +5,9 @@ import { Navigate } from 'react-router-dom';
 function AuthRoute({ children }) {
 	const { currentUser } = useContext(AuthContext);
 	const verifiedMail = currentUser?.verified_mail ?? true;
+	const token = JSON.parse(sessionStorage.getItem('token'));
 
-	if(currentUser) 
+	if(currentUser || token) 
 		return <Navigate to="/dashboard" replace />
 	else if(!verifiedMail) 
 		return <Navigate to="/confirm-mail" replace />

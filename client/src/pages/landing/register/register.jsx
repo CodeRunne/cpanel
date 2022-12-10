@@ -50,7 +50,7 @@ function Register() {
             setTimeout(() => {
                 axios.post(registerAuthApi, user)
                     .then(({ data }) => {
-                        const { status, user, message } = data;
+                        const { status, user, message, verified_mail } = data;
 
                         if(status === "success") {
                             // set isLoading to false
@@ -68,7 +68,10 @@ function Register() {
                             setEmail("");
                             setPassword("");
 
-                            navigate('/confirm-mail');
+                            if(!verified_mail)
+                                navigate('/confirm-mail');
+                            else
+                                navigate('/dashboard')
                         } else {
                             // set isLoading to false
                             setIsLoading(false);

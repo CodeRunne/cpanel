@@ -45,17 +45,18 @@ const database = {
         telegram: [
             {
                 id: 4332,
-                service: 'telegram 0% drop members - [Super instant start][high speed]',
+                service: 'telegram 0% drop members - [Super instant start][high speed] 🎀',
                 rate: 0.88,
                 min_order: 500,
                 max_order: 25000,
                 avg_time: '1 hour 24 minutes',
                 description: {
-                    options: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
                     notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
                     link: "🧷 Link Format: https://t.me/example or @example",
                     start_time: '⏳ Start Time: 30 min - 4 hours',
-                    content: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"]
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
                 }
             },
             {
@@ -65,7 +66,13 @@ const database = {
                 min_order: 100,
                 max_order: 30000,
                 avg_time: '8 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 1 hour - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                }
             },
             {
                 id: 4231,
@@ -74,7 +81,14 @@ const database = {
                 min_order: 500,
                 max_order: 18000,
                 avg_time: '29 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             },
             {
                 id: 4194,
@@ -83,7 +97,14 @@ const database = {
                 min_order: 100,
                 max_order: 80000,
                 avg_time: '5 hour 45 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             },
             {
                 id: 4265,
@@ -92,7 +113,14 @@ const database = {
                 min_order: 500,
                 max_order: 30000,
                 avg_time: '1 hour 25 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             }
         ],
         spotify: [
@@ -103,7 +131,14 @@ const database = {
                 min_order: 600,
                 max_order: 5000,
                 avg_time: '42 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             },
             {
                 id: 5289,
@@ -112,7 +147,14 @@ const database = {
                 min_order: 1500,
                 max_order: 3000,
                 avg_time: '1 hour 2 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             }
         ],
         instagram: [
@@ -123,7 +165,14 @@ const database = {
                 min_order: 700,
                 max_order: 4000,
                 avg_time: '1 hour 47 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             },
             {
                 id: 6389,
@@ -132,7 +181,14 @@ const database = {
                 min_order: 1500,
                 max_order: 3000,
                 avg_time: 'Not enough data',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             },
             {
                 id: 6444,
@@ -141,7 +197,13 @@ const database = {
                 min_order: 8500,
                 max_order: 12000,
                 avg_time: '1 hour 2 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"]
+                }
             }
         ],
         twitter: [
@@ -152,7 +214,13 @@ const database = {
                 min_order: 800,
                 max_order: 12600,
                 avg_time: '34 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"]
+                }
             },
             {
                 id: 7656,
@@ -161,7 +229,14 @@ const database = {
                 min_order: 3000,
                 max_order: 30000,
                 avg_time: '5 minutes',
-                description: 'Whatever purpose you buy it for e sure for you'
+                description: {
+                    features: ["✅ High Quality", "✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owners", "✅ 1 month Non Drop 1 - Month Fill Guarantee"],
+                    notice: ["✅ Chanel Group", "✅ Public and private", "✅ Suitable for all Country Owner", "✅ Cancel Button Enabled"],
+                    link: "🧷 Link Format: https://t.me/example or @example",
+                    start_time: '⏳ Start Time: 30 min - 4 hours',
+                    notice: ["🟨 The number you order will be delivered in the same amount, regardless of the channel drop", "🟨 If you change the link while you work, your order will be changed to a complete state, in which we will not refund the cost"],
+                    warning: true
+                }
             }
         ]
     },
@@ -170,7 +245,7 @@ const database = {
             id: 0,
             userID: 'dsfs345fd',
             category: 'telegram',
-            services: 'Telegram 0% Drop Members - [Super Instant Start][High Speed]',
+            service: 'Telegram 0% Drop Members - [Super Instant Start][High Speed]',
             link: "https://t.me/axios",
             quantity: 500,
             status: 'pending',
@@ -181,7 +256,7 @@ const database = {
             id: 1,
             userID: 'dsfs345fd',
             category: 'spotify',
-            services: 'Spotify Enhancer - [Super Instant Start]',
+            service: 'Spotify Enhancer - [Super Instant Start]',
             link: "https://t.me/axios",
             quantity: 7000,
             status: 'completed',
@@ -192,7 +267,7 @@ const database = {
             id: 2,
             userID: 'another user',
             category: 'instagram',
-            services: 'Instagram Enhancer - [Instagram Start Server]',
+            service: 'Instagram Enhancer - [Instagram Start Server]',
             link: 6362,
             quantity: 5000,
             status: 'pending',
@@ -200,7 +275,13 @@ const database = {
             averageTime: '30 minutes'
         }
     ],
-    funds: [],
+    funds: [
+        {
+            userID: 'dsfs345fd',
+            accountBalance: 32.10,
+            balanceSpent: 0.00
+        }
+    ],
     mails: [],
     session: ["mrans4eh39n"]
 }
@@ -218,7 +299,7 @@ app.get('/user-session', (req, res) => {
 // Register user route
 app.post("/register", (req, res) => {
     // Database
-    const { users, session } = database;
+    const { users, session, funds, orders } = database;
 
     const { username, email, password } = req.body;
 
@@ -235,15 +316,29 @@ app.post("/register", (req, res) => {
         // Fetch user session
         const [ userSession ] = session;
 
+
         users.push({
             id: Math.random().toString(36).slice(2),
             sessionID: userSession,
             username,
             email,
             password,
-            verified_mail: false,
+            verified_mail: true,
             created_at: new Date().toISOString()
         });
+
+        // User ID
+        const userID = users[users.length - 1].id; 
+
+
+        funds.push({
+            userID,
+            accountBalance: 0.00, 
+            balanceSpent: 0.00
+        });
+
+        const { accountBalance, balanceSpent } = funds.filter(fund => fund.userID === userID)[0];
+        const userOrdersAmount = orders.filter(order => order.userID === userID).length || 0;
         
 
         const user = {
@@ -251,10 +346,10 @@ app.post("/register", (req, res) => {
             sessionID: session[0],
             username,
             email,
-            verified_mail: false
+            verified_mail: false,
+            funds: {accountBalance, balanceSpent},
+            orders_amount: userOrdersAmount
         }
-
-        console.log({ status: "success", user });
 
         res.send({ status: "success", user });
     } else 
@@ -266,19 +361,23 @@ app.post("/login", (req, res) => {
     const { username, password } = req.body;
 
     // Database
-    let { users } = database;
+    let { users, orders, funds } = database;
 
     const existingUser = users.find(user => user.username === username && user.password === password);
 
     if(existingUser) {
         const { id, sessionID, username, email, verified_mail } = existingUser;
+        const { accountBalance, balanceSpent } = funds.filter(fund => fund.userID === id)[0];
+        const userOrdersAmount = orders.filter(order => order.userID === id).length;
 
         const user = {
             id,
             sessionID,
             username,
             email,
-            verified_mail
+            verified_mail,
+            funds: {accountBalance, balanceSpent},
+            orders_amount: userOrdersAmount
         }
 
         const data = {
@@ -300,7 +399,6 @@ app.post("/forgot-password", (req, res) => {
 
     if(existingUser) {
         const newPassword = "cypher123456";
-        console.log(newPassword)
 
         existingUser = {
             ...existingUser,
@@ -310,7 +408,29 @@ app.post("/forgot-password", (req, res) => {
         res.send({ status: "success" });
     } else 
         res.send({ status: "invalid", message: "User does not exist" });
-})
+});
+
+// Reset Password
+app.post("/reset-password", (req, res) => {
+    const { email, password } = req.body;
+    const { users } = database;
+
+    let existingUser = users.find(user => user.email === email);
+
+    if(existingUser) {
+        const updateUserPassword = users.map(user => user.email === email ? {...user, password} : user);
+        console.log(updateUserPassword);
+
+        // users = users.concat()
+        existingUser = {
+            ...existingUser,
+            password: newPassword
+        };
+
+        res.send({ status: "success" });
+    } else 
+        res.send({ status: "invalid", message: "User does not exist" });
+});
 
 // Auth route
 app.post('/auth/:token', (req, res) => {
@@ -362,7 +482,8 @@ app.get("/services", (req, res) => {
     res.send(services);
 }); 
 
-app.post("/services/:category", (req, res) => {
+// Filter services
+app.get("/services/:category", (req, res) => {
     let { category } = req.params;
     const { services } = database;
 
@@ -373,6 +494,21 @@ app.post("/services/:category", (req, res) => {
 
     if(servicesCategory)
         res.send(servicesCategory);
+})
+
+// Search services
+app.post("/services/search", (req, res) => {
+    const { serviceName } = req.body;
+    const { services } = database;
+
+    const servicesEntries = Object.entries(services);
+    const servicesCategoryData = servicesEntries.map(([, data]) => data).flat();
+    const servicesCategoryName = servicesEntries.map(([name]) => name);
+    const existingServices = servicesCategoryData.filter(service => service.service.toLowerCase().includes(serviceName.toLowerCase()));
+    const serviceType = servicesCategoryName.filter(name => serviceName.toLowerCase().includes(name))[0];
+
+    if(existingServices)
+        res.send({ status: 'success', services: {[serviceType]: existingServices}});
 })
 
 // Orders
@@ -386,18 +522,18 @@ app.get("/orders", (req, res) => {
 
 // Book orders
 app.post("/dashboard/book-order", (req, res) => {
-    const { userID, category, services, link, averageTime, quantity, charge } = req.body;
+    const { userID, category, service, link, averageTime, quantity, charge } = req.body;
     
     // Database
     const { orders } = database; 
-    const validateData = [userID, category, services, link, averageTime, quantity, charge].every(value => Boolean(value));
+    const validateData = [userID, category, service, link, averageTime, quantity, charge].every(value => Boolean(value));
 
     if(validateData) {
         const newOrder = {
             id: Math.random().toString(36).slice(2),
             userID, 
             category, 
-            services, 
+            service, 
             link, 
             averageTime, 
             quantity, 
@@ -405,8 +541,6 @@ app.post("/dashboard/book-order", (req, res) => {
             status: 'pending',
             created_at: new Date().toISOString()
         };
-
-        console.log(newOrder, "order")
 
         orders.push(newOrder);
 

@@ -21,20 +21,23 @@ export const LoginFeatureRemember = styled.div`
 
 export const LoginRememberText = styled.span`
     color: var(--grey-tint-7);
-    font-size: .96rem;
-    margin-top: -.1rem;
+    font-size: .98rem;
     
     @media (max-width: 1024px) {
-        font-size: 1rem;
+        font-size: 1.02rem;
     }
 
     @media (max-width: 768px) {
-        font-size: 1.1rem;
+        font-size: 1.11rem;
     }
 
     @media (max-width: 425px) {
-        font-size: 1.2rem;
-        margin-top: -0.22rem;
+        font-size: 1.22rem;
+        margin-top: -0.2rem;
+    }
+
+    @media (max-width: 375px) {
+        font-size: 1.225rem;
     }
 `;
 

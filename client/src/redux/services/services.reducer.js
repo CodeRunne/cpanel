@@ -14,7 +14,7 @@ function servicesReducer(state = initialState, action) {
 			return {
 				...state,
 				services: Object.assign({}, action.payload),
-				categories: [].concat(Object.keys({ ...action.payload })),
+				categories: ['all'].concat(Object.keys({ ...action.payload })),
 				status: 'success'
 			}
 		case ServicesActionTypes.FETCH_SERVICES_FAILED:
@@ -24,6 +24,12 @@ function servicesReducer(state = initialState, action) {
 				error: action.payload
 			}
 		case ServicesActionTypes.FILTER_SERVICES_BY_CATEGORY:
+			return {
+				...state,
+				services: Object.assign({}, action.payload),				
+				status: 'success'
+			}
+		case ServicesActionTypes.SEARCH_SERVICES_BY_SERVICE:
 			return {
 				...state,
 				services: Object.assign({}, action.payload),				

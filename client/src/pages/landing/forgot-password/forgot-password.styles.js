@@ -59,7 +59,7 @@ export const ForgotPasswordContainer = styled.main`
 `;
 
 export const ForgotPasswordHeader = styled.header`
-	margin-bottom: .7rem;
+    margin-bottom: .7rem;
 `;
 
 export const ForgotPasswordHeaderText = styled.h4`
@@ -67,51 +67,51 @@ export const ForgotPasswordHeaderText = styled.h4`
     margin-bottom: 0.5rem;
 
     @media (max-width: 1200px) {
-    	font-size: 1.5rem;
-    	margin-bottom: .8rem;
+        font-size: 1.5rem;
+        margin-bottom: .8rem;
     }
 
     @media (max-width: 900px) {
-    	font-size: 1.7rem;
+        font-size: 1.7rem;
     }
 
     @media (max-width: 425px) {
-    	margin-bottom: 1.1rem;
+        margin-bottom: 1.1rem;
     }
 `;
 
 export const ForgotPasswordSubHeader = styled.p`
-	font-size: 1.05rem;
+    font-size: 1.05rem;
     line-height: 1.5;
     color: var(--grey-tint-6);
 
     @media (max-width: 1200px) {
-    	font-size: 1.12rem;
-    	line-height: 1.55;
+        font-size: 1.12rem;
+        line-height: 1.55;
     }
 
     @media (max-width: 900px) {
-    	font-size: 1.2rem;
-    	line-height: 1.5;
+        font-size: 1.2rem;
+        line-height: 1.5;
     }
 
     @media (max-width: 768px) {
-    	line-height: 1.7;
+        line-height: 1.7;
     }
 
     @media (max-width: 500px) {
-    	font-size: 1.16rem;
+        font-size: 1.16rem;
     }
 
     @media (max-width: 425px) {
-    	font-size: 1.2rem;
+        font-size: 1.2rem;
     }
 
     @media (max-width: 375px) {
-    	font-size: 1.26rem;
+        font-size: 1.26rem;
     }
 
     @media (max-width: 300px) {
-    	font-size: 1.2rem;
+        font-size: 1.2rem;
     }
 `;

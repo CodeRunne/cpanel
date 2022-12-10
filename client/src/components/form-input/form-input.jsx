@@ -9,9 +9,13 @@ import {
     FormInputInfo
 } from './form-input.styles';
 
-function FormInput({ label, error, info, handleChange, ...otherInputProps }) {
+function FormInput({ label, error, info, handleChange, groupStyle, ...otherInputProps }) {
     return (
-        <FormGroup className="form-group d-flex d-flex-column" role="group">
+        <FormGroup 
+            className="form-group d-flex d-flex-column" 
+            role="group"
+            style={groupStyle}
+        >
             {/* Form label */}
             {label && <FormLabel content={label} /> }
 
@@ -53,6 +57,7 @@ FormInput.propTypes = {
     label: PropTypes.string,
     error: PropTypes.string,
     info: PropTypes.string,
+    groupStyle: PropTypes.object,
     handleChange: PropTypes.func.isRequired
 }
 

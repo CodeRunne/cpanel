@@ -20,9 +20,9 @@ const LBSRing = keyframes`
 export const SpinnerItem = styled.div`
 	 box-sizing: border-box;
   position: absolute;
-  width: 3.8rem;
-  height: 3.8rem;
-  border: 4px solid var(--grey-tint-7);
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 3px solid var(--grey-tint-7);
   border-radius: 50%;
   animation: ${LBSRing} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: var(--grey-tint-7) transparent transparent transparent;

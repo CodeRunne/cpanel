@@ -8,6 +8,7 @@ export const ConfirmMailContainer = styled.div`
 	padding: 2.4rem 2.1rem;
 	background: var(--white);
 	box-shadow: .8px 1px .7rem rgba(0,0,0,0.02);
+	border: 1px solid var(--grey-tint-1);
 	border-radius: .2rem;
 
 	@media (max-width: 1200px) {

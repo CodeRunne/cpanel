@@ -1,15 +1,15 @@
-function NewOrderValidation({ category, services, link, averageTime, quantity, charge }) {
+function NewOrderValidation({ category, service, link, averageTime, quantity, charge }) {
 	let numb = {};
 	let errors = {};
 
 	if(!category.length)
 		errors.categories = "Please select a category you would like to order";
 
-	if(!services.length)
-		errors.services = "Please select a service you would like to order";
+	if(!service.length)
+		errors.service = "Please select a service you would like to order";
 
-	if(!services.includes(category))
-		errors.services = "Select service based on the selected category";
+	if(!service.includes(category))
+		errors.service = "Select service based on the selected category";
 
 	if((/^https:\/\/(t\.me)+\/[\w]+$/ig).exec(link) || (/^@[a-zA-Z]{3,}$/ig).exec(link))
 			numb.value = "val";
